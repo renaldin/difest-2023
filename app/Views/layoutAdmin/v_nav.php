@@ -8,7 +8,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <?php if (session()->get('role') === 'Admin') { ?>
+      <?php if (session()->get('role')) { ?>
         <ul class="navbar-nav mx-auto h-100">
           <li class="nav-item">
             <a class="nav-link <?= $title === 'Admin' ? 'active' : '' ?>" href="index.html">
@@ -29,11 +29,13 @@
               <a class="dropdown-item" href="#">Short Movie</a>
             </div>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <i class="far fa-user"></i> Pengguna
-            </a>
-          </li>
+          <?php if (session()->get('role') === 'Admin') { ?>
+            <li class="nav-item">
+              <a class="nav-link <?= $title === 'Pengguna' ? 'active' : '' ?>" href="<?= base_url('user') ?>">
+                <i class="far fa-user"></i> Pengguna
+              </a>
+            </li>
+          <?php } ?>
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">

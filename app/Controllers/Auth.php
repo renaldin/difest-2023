@@ -55,7 +55,6 @@ class Auth extends BaseController
                 session()->set('username', $cek_user['username']);
                 session()->set('nama', $cek_user['nama_user']);
                 session()->set('role', $cek_user['role']);
-                session()->set('foto', $cek_user['foto']);
 
                 return redirect()->to(base_url('admin'));
             } else {
@@ -75,7 +74,6 @@ class Auth extends BaseController
         session()->remove('log');
         session()->remove('username');
         session()->remove('nama');
-        session()->remove('foto');
         session()->remove('role');
 
         session()->setFlashdata('success', 'Logout Berhasil !!!');

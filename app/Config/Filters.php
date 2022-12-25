@@ -16,10 +16,11 @@ class Filters extends BaseConfig
      * @var array
      */
     public $aliases = [
-        'csrf'     => CSRF::class,
-        'toolbar'  => DebugToolbar::class,
-        'honeypot' => Honeypot::class,
-        'filterauth' => \App\Filters\FilterAuth::class,
+        'csrf'          => CSRF::class,
+        'toolbar'       => DebugToolbar::class,
+        'honeypot'      => Honeypot::class,
+        'filterauth'    => \App\Filters\FilterAuth::class,
+        'filterpanitia' => \App\Filters\FilterPanitia::class,
     ];
 
     /**
@@ -39,9 +40,29 @@ class Filters extends BaseConfig
                 'pendaftaran', 'pendaftaran/*',
                 '/',
             ]],
+
+            'filterpanitia' => ['except' => [
+                'auth', 'auth/*',
+                'home', 'home/*',
+                'Detail_lomba', 'Detail_lomba/*',
+                'pendaftaran', 'pendaftaran/*',
+                '/',
+            ]],
         ],
         'after' => [
             'filterauth' => ['except' => [
+                'admin', 'admin/*',
+                'home', 'home/*',
+                'Detail_lomba', 'Detail_lomba/*',
+                'pendaftaran', 'pendaftaran/*',
+                '/',
+                'user', 'user/*',
+                'desain_web', 'desain_web/*',
+                'desain_maskot', 'desain_maskot/*',
+                'desain_poster', 'desain_poster/*',
+                'photography', 'photography/*',
+            ]],
+            'filterpanitia' => ['except' => [
                 'admin', 'admin/*',
                 'home', 'home/*',
                 'Detail_lomba', 'Detail_lomba/*',
@@ -51,7 +72,6 @@ class Filters extends BaseConfig
                 'desain_maskot', 'desain_maskot/*',
                 'desain_poster', 'desain_poster/*',
                 'photography', 'photography/*',
-                'user', 'user/*',
             ]],
             'toolbar',
             // 'honeypot',

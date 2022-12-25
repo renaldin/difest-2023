@@ -6,7 +6,7 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use CodeIgniter\Filters\FilterInterface;
 
-class FilterAuth implements FilterInterface
+class FilterPanitia implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
@@ -20,7 +20,7 @@ class FilterAuth implements FilterInterface
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
         // Do something here
-        if (session()->get('role') == 'Admin') {
+        if (session()->get('role') == 'Panitia') {
             return redirect()->to(base_url('admin'));
         }
     }
