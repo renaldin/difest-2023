@@ -22,8 +22,51 @@
         configPie,
         pieChart;
     // DOM is ready
-    $(function() {
-        drawPieChart();
+    $(function drawPieChart() {
+        if ($("#pieChart").length) {
+            var chartHeight = 300;
+
+            $("#pieChartContainer").css("height", chartHeight + "px");
+
+            ctxPie = document.getElementById("pieChart").getContext("2d");
+
+            optionsPie = {
+                responsive: true,
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 10,
+                        top: 10,
+                        bottom: 10
+                    }
+                },
+                legend: {
+                    position: "top"
+                }
+            };
+
+            configPie = {
+                type: "pie",
+                data: {
+                    datasets: [{
+                        data: [18, 5, 10, 10, 5],
+                        backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582", "#d024bc", "#207cfc"],
+                        label: "Storage"
+                    }],
+                    labels: [
+                        "Desain Maskot",
+                        "Desain Web",
+                        "Desain Poster",
+                        "Photography",
+                        "Short Movie",
+                    ]
+                },
+                options: optionsPie
+            };
+
+            pieChart = new Chart(ctxPie, configPie);
+        }
     })
 </script>
 <!-- https://getbootstrap.com/ -->
