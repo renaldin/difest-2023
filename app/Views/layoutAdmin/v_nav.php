@@ -8,10 +8,10 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <?php if (session()->get('role') === '') { ?>
+      <?php if (session()->get('role') === 'Admin') { ?>
         <ul class="navbar-nav mx-auto h-100">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link <?= $title === 'Admin' ? 'active' : '' ?>" href="index.html">
               <i class="fas fa-tachometer-alt"></i> Dashboard
               <span class="sr-only">(current)</span>
             </a>
@@ -28,7 +28,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="products.html">
+            <a class="nav-link" href="products.html">
               <i class="fas fa-shopping-cart"></i> Products
             </a>
           </li>

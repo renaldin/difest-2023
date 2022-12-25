@@ -43,6 +43,10 @@ class Filters extends BaseConfig
         'after' => [
             'filterauth' => ['except' => [
                 'admin', 'admin/*',
+                'home', 'home/*',
+                'Detail_lomba', 'Detail_lomba/*',
+                'pendaftaran', 'pendaftaran/*',
+                '/',
                 'desain_web', 'desain_web/*',
                 'desain_maskot', 'desain_maskot/*',
                 'desain_poster', 'desain_poster/*',

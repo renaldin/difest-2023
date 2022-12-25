@@ -8,8 +8,8 @@ class Admin extends BaseController
     {
         $data = [
             'title' => 'Admin',
-            'isi'   => 'v_admin'
+            'isi'   => 'admin/admin'
         ];
-        return view('layout/v_wrapper', $data);
+        return view('layoutAdmin/v_wrapper', $data);
     }
 }
