@@ -11,7 +11,7 @@
       <?php if (session()->get('role')) { ?>
         <ul class="navbar-nav mx-auto h-100">
           <li class="nav-item">
-            <a class="nav-link <?= $title === 'Admin' ? 'active' : '' ?>" href="index.html">
+            <a class="nav-link <?= $title === 'Admin' ? 'active' : '' ?>" href="<?= base_url('admin') ?>">
               <i class="fas fa-tachometer-alt"></i> Dashboard
               <span class="sr-only">(current)</span>
             </a>
