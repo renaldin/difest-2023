@@ -33,13 +33,6 @@ class Auth extends BaseController
                     'required' => '{field} wajib diisi.'
                 ],
             ],
-            'level' => [
-                'label' => 'Hak akses',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.'
-                ],
-            ],
             'password' => [
                 'label' => 'Password',
                 'rules' => 'required',
@@ -51,31 +44,24 @@ class Auth extends BaseController
 
         if ($this->validate($loginValid)) {
             //jika valid
-            $level = $this->request->getPost('level');
 
             $username = $this->request->getPost('username');
             $password = md5($this->request->getPost('password'));
 
-            if ($level == 1) {
-                $cek_user = $this->ModelAuth->login_user($username, $password);
-                if ($cek_user) {
-                    //jika data cocok
-                    session()->set('log', true);
-                    session()->set('username', $cek_user['username']);
-                    session()->set('nama', $cek_user['nama_user']);
-                    session()->set('foto', $cek_user['foto']);
-                    session()->set('level', $level);
+            $cek_user = $this->ModelAuth->login_user($username, $password);
+            if ($cek_user) {
+                //jika data cocok
+                session()->set('log', true);
+                session()->set('username', $cek_user['username']);
+                session()->set('nama', $cek_user['nama_user']);
+                session()->set('role', $cek_user['role']);
+                session()->set('foto', $cek_user['foto']);
 
-                    return redirect()->to(base_url('admin'));
-                } else {
-                    //jika data tidak cocok
-                    session()->setFlashdata('pesan', 'Login gagal!!! Username atau password salah.');
-                    return redirect()->to(base_url('Auth/index'));
-                }
-            } else if ($level == 2) {
-                echo "Mahasiswa";
-            } else if ($level == 3) {
-                echo "Dosen";
+                return redirect()->to(base_url('admin'));
+            } else {
+                //jika data tidak cocok
+                session()->setFlashdata('pesan', 'Login gagal!!! Username atau password salah.');
+                return redirect()->to(base_url('Auth/index'));
             }
         } else {
             //jika tidak valid
@@ -90,7 +76,7 @@ class Auth extends BaseController
         session()->remove('username');
         session()->remove('nama');
         session()->remove('foto');
-        session()->remove('level');
+        session()->remove('role');
 
         session()->setFlashdata('success', 'Logout Berhasil !!!');
         return redirect()->to(base_url('Auth/index'));

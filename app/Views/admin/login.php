@@ -24,13 +24,13 @@
             <?php
 
             if (session()->getFlashdata('pesan')) {
-              echo '<div class="alert alert-warning" role="alert">';
+              echo '<div class="alert alert-danger" role="alert">';
               echo session()->getFlashdata('pesan');
               echo '</div>';
             }
 
             if (session()->getFlashdata('success')) {
-              echo '<div class="alert bg-purple" role="alert">';
+              echo '<div class="alert" style="background-color: #d024bc; color: white;" role="alert">';
               echo session()->getFlashdata('success');
               echo '</div>';
             }
