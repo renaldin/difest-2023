@@ -1,6 +1,6 @@
 <?php
 
-echo view('layout/v_head');
-echo view('layout/v_nav');
-echo view('layout/v_content');
-echo view('layout/v_footer');
+echo view('layoutAdmin/v_head');
+echo view('layoutAdmin/v_nav');
+echo view('layoutAdmin/v_content');
+echo view('layoutAdmin/v_footer');

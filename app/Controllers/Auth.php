@@ -17,9 +17,9 @@ class Auth extends BaseController
     {
         $data = [
             'title' => 'Login',
-            'isi'   => 'v_login'
+            'isi'   => 'admin/login'
         ];
-        return view('layout/v_wrapper', $data);
+        return view('layoutAdmin/v_wrapper', $data);
     }
 
     public function cek_login()
