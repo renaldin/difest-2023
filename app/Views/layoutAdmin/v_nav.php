@@ -17,12 +17,12 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle <?= $title === 'Desain Maskot' ? 'active' : '' ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-cog"></i>
               <span> Lomba <i class="fas fa-angle-down"></i> </span>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Desain Maskot</a>
+              <a class="dropdown-item" href="<?= base_url('desainmaskot') ?>">Desain Maskot</a>
               <a class="dropdown-item" href="#">Desain Web</a>
               <a class="dropdown-item" href="#">Desain Poster</a>
               <a class="dropdown-item" href="#">Photography</a>

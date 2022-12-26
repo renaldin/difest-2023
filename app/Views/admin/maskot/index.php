@@ -1,55 +1,57 @@
-<!-- judul -->
-<section class="content-header">
-    <h1>
-        <?= $title; ?>
-    </h1>
-    <br>
-</section>
+<div class="container mt-5">
+    <div class="row tm-content-row">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
+            <div class="tm-bg-primary-dark tm-block tm-block-products">
+                <h2 class="tm-block-title">Daftar Peserta <?= $title ?></h2>
+                <div class="row mb-2">
+                    <div class="col-lg-8">
+                        <form action="<?= base_url('desainmaskot') ?>" method="POST">
+                            <div class="row">
+                                <div class="col-lg-6 mb-2">
+                                    <input type="text" name="keyword" class="form-control">
+                                </div>
+                                <div class="col-lg-4 mb-2">
+                                    <button type="submit" class="btn btn-primary" style="float: left;">Cari</button>
+                                    <?php if ($cari === 'Aktif') { ?>
+                                        <a href="<?= base_url('desainmaskot') ?>" class="btn btn-secondary" style="float: left;">Clear</a>
+                                    <?php } ?>
+                                </div>
+                            </div>
 
-<div class="row">
-    <div class="col-sm-12" data-aos="zoom-in-down">
-        <div class="box box-solid">
+                        </form>
+                    </div>
+                </div>
 
-            <!-- /.box-header -->
-            <div class="box-body">
-                <?php
-                if (session()->getFlashdata('pesan')) {
-                    echo '<div class="alert bg-purple" role="alert">';
-                    echo session()->getFlashdata('pesan');
-                    echo '</div>';
-                }
-                ?>
-
-                <table class="table table-bordered table-striped" id="example1">
-                    <thead>
-                        <tr>
-                            <th width="50px" class="text-center">No</th>
-                            <th>Email</th>
-                            <th>Nama Lengkap</th>
-                            <th class="text-center">Bukti Pembayaran</th>
-                            <th width="150px" class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $no = 1;
-                        foreach ($desain_maskot as $row) {
-                        ?>
+                <div class="tm-product-table-container">
+                    <table class="table table-hover tm-table-small tm-product-table">
+                        <thead>
                             <tr>
-                                <td class="text-center"><?= $no++; ?></td>
-                                <td><b><?= $row['email']; ?></b></td>
-                                <td><?= $row['nama_lengkap']; ?></td>
-                                <td class="text-center"><img src="<?= base_url('fotomaskot/' . $row['bukti_pembayaran']) ?>" alt="" height="50" width="50"></td>
-                                <td class="text-center">
-                                    <a href="<?= base_url('desain_maskot/detail/' . $row['id_pendaftaran_maskot']); ?>" class="btn bg-purple-gradient btn-sm btn-flat"><i class="fa fa-th-list"> Detail</i></a>
-                                </td>
+                                <th scope="col">No</th>
+                                <th scope="col">Nama Peserta</th>
+                                <th scope="col">Alamat</th>
+                                <th scope="col">Instansi</th>
+                                <th scope="col" class="text-center">Aksi</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1;
+                            foreach ($desainMaskot as $item) { ?>
+                                <tr>
+                                    <td><?= $no++ ?></td>
+                                    <td class="tm-product-name"><?= $item['nama_lengkap'] ?></td>
+                                    <td class="tm-product-name"><?= $item['alamat'] ?></td>
+                                    <td class="tm-product-name"><?= $item['instansi'] ?></td>
+                                    <td class="text-center">
+                                        <button type="button" style="cursor: pointer;" class="tm-product-delete-link mb-1" data-toggle="modal" data-target="#edit<?= $item['id_user'] ?>">
+                                            <i class="fa fa-eye tm-product-delete-icon"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <!-- /.box-body -->
         </div>
-        <!-- /.box -->
     </div>
 </div>

@@ -14,6 +14,16 @@ class ModelDesainMaskot extends Model
             ->get()->getResultArray();
     }
 
+    public function cariData($keyword)
+    {
+        return $this->db->table('pendaftaran_maskot')
+            ->like('nama_lengkap', $keyword)
+            ->orLike('alamat', $keyword)
+            ->orLike('instansi', $keyword)
+            ->orderBy('id_pendaftaran_maskot', 'DESC')
+            ->get()->getResultArray();
+    }
+
     public function detail($id_pendaftaran_maskot)
     {
         return $this->db->table('pendaftaran_maskot')
