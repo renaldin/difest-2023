@@ -14,6 +14,16 @@ class ModelDesainWeb extends Model
             ->get()->getResultArray();
     }
 
+    public function cariData($keyword)
+    {
+        return $this->db->table('pendaftaran_web')
+            ->like('email', $keyword)
+            ->orLike('instansi', $keyword)
+            ->orLike('nama_tim', $keyword)
+            ->orderBy('id_pendaftaran_web', 'DESC')
+            ->get()->getResultArray();
+    }
+
     public function detail($id_pendaftaran_web)
     {
         return $this->db->table('pendaftaran_web')
