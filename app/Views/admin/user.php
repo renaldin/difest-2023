@@ -3,7 +3,22 @@
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
             <div class="tm-bg-primary-dark tm-block tm-block-products">
                 <div class="row mb-2">
-                    <div class="col-lg-8"></div>
+                    <div class="col-lg-8">
+                        <form action="<?= base_url('user') ?>" method="POST">
+                            <div class="row">
+                                <div class="col-lg-6 mb-2">
+                                    <input type="text" name="keyword" class="form-control">
+                                </div>
+                                <div class="col-lg-4 mb-2">
+                                    <button type="submit" class="btn btn-primary" style="float: left;">Cari</button>
+                                    <?php if ($cari === 'Aktif') { ?>
+                                        <a href="<?= base_url('user') ?>" class="btn btn-secondary" style="float: left;">Clear</a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
                     <div class="col-lg-4">
                         <button type="button" class="btn btn-primary" style="float: right;" data-toggle="modal" data-target="#tambah"><i class="fa fa-plus"></i> Tambah</button>
                     </div>

@@ -17,11 +17,22 @@ class User extends BaseController
 
     public function index()
     {
-        $data = [
-            'title'     => 'Pengguna',
-            'user'      => $this->ModelUser->allData(),
-            'isi'       => 'admin/user'
-        ];
+        if ($this->request->getPost('keyword')) {
+            $keyword = $this->request->getPost('keyword');
+            $data = [
+                'title'     => 'Pengguna',
+                'cari'      => 'Aktif',
+                'user'      => $this->ModelUser->cariData($keyword),
+                'isi'       => 'admin/user'
+            ];
+        } else {
+            $data = [
+                'title'     => 'Pengguna',
+                'cari'      => 'Tidak Aktif',
+                'user'      => $this->ModelUser->allData(),
+                'isi'       => 'admin/user'
+            ];
+        }
         return view('layoutAdmin/v_wrapper', $data);
     }
 
