@@ -14,6 +14,16 @@ class ModelDesainPoster extends Model
             ->get()->getResultArray();
     }
 
+    public function cariData($keyword)
+    {
+        return $this->db->table('poster')
+            ->like('nama_peserta', $keyword)
+            ->orLike('alamat', $keyword)
+            ->orLike('instansi', $keyword)
+            ->orderBy('id_pendaftaran_poster', 'DESC')
+            ->get()->getResultArray();
+    }
+
     public function detail($id_pendaftaran_poster)
     {
         return $this->db->table('poster')

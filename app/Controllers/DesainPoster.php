@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelDesainPoster;
 
-class Desain_poster extends BaseController
+class DesainPoster extends BaseController
 {
 
     public function __construct()
@@ -20,7 +20,7 @@ class Desain_poster extends BaseController
             $keyword = $this->request->getPost('keyword');
             $data = [
                 'title'             => 'Desain Poster',
-                'desainposter'      => $this->ModelDesainPoster->allData(),
+                'desainposter'      => $this->ModelDesainPoster->cariData($keyword),
                 'cari'              => 'Aktif',
                 'keyword'           => $keyword,
                 'isi'               => 'admin/poster/index'
