@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\ModelPendaftaran;
 use App\Models\ModelDesainMaskot;
 use App\Models\ModelDesainWeb;
+use App\Models\ModelDesainPoster;
 
 class Pendaftaran extends BaseController
 {
@@ -12,9 +13,10 @@ class Pendaftaran extends BaseController
     {
         helper('form');
         helper('download');
-        $this->ModelPendaftaran = new ModelPendaftaran();
-        $this->ModelDesainMaskot = new ModelDesainMaskot();
-        $this->ModelDesainWeb = new ModelDesainWeb();
+        $this->ModelPendaftaran     = new ModelPendaftaran();
+        $this->ModelDesainMaskot    = new ModelDesainMaskot();
+        $this->ModelDesainWeb       = new ModelDesainWeb();
+        $this->ModelDesainPoster    = new ModelDesainPoster();
     }
 
     public function index()
@@ -383,19 +385,21 @@ class Pendaftaran extends BaseController
     public function informasiMaskot($id_pendaftaran_maskot)
     {
         $data = [
-            'title' => 'Informasi Desain Maskot',
-            'maskot' => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
-            'isi'   => 'pendaftaran/maskot/informasiMaskot'
+            'title'     => 'Informasi Desain Maskot',
+            'maskot'    => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
+            'isi'       => 'pendaftaran/maskot/informasiMaskot'
         ];
         return view('layout/v_wrapper', $data);
     }
     // ===================================================================
 
+    // ===================================================================
+    // Desain Poster
     public function inputDataPoster()
     {
         $data = [
-            'title' => 'Input Data Pendaftaran Desain Poster',
-            'isi'   => 'pendaftaran/inputDataPoster'
+            'title' => 'Pendaftaran Desain Poster',
+            'isi'   => 'pendaftaran/poster/inputDataPoster'
         ];
         return view('layout/v_wrapper', $data);
     }
@@ -405,13 +409,13 @@ class Pendaftaran extends BaseController
         $posterValid = [
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required|is_unique[pendaftaran_poster.email]',
+                'rules' => 'required|is_unique[poster.email]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
                     'is_unique' => '{field} sudah ada. Silahkan input yang lain!!!.'
                 ]
             ],
-            'nama_lengkap' => [
+            'nama_peserta' => [
                 'label' => 'Nama Lengkap',
                 'rules' => 'required',
                 'errors' => [
@@ -434,13 +438,6 @@ class Pendaftaran extends BaseController
             ],
             'wa' => [
                 'label' => 'Nomor Whatsapp',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.'
-                ]
-            ],
-            'instagram' => [
-                'label' => 'Instagram',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -511,13 +508,12 @@ class Pendaftaran extends BaseController
             $pembayaran = $bukti_pembayaran->getRandomName();
 
             $data = [
-                'jenis_lomba'   => $this->request->getPost('jenis_lomba'),
+                'jenis_lomba'   => 'Desain Poster',
                 'email'         => $this->request->getPost('email'),
-                'nama_lengkap'  => $this->request->getPost('nama_lengkap'),
+                'nama_peserta'  => $this->request->getPost('nama_peserta'),
                 'alamat'        => $this->request->getPost('alamat'),
                 'instansi'      => $this->request->getPost('instansi'),
                 'wa'            => $this->request->getPost('wa'),
-                'instagram'     => $this->request->getPost('instagram'),
                 'scan_kartu'    => $kartu_anggota,
                 // bukti
                 'bukti_igdifest' => $igdifest,
@@ -535,13 +531,26 @@ class Pendaftaran extends BaseController
             $this->ModelPendaftaran->addPendaftaranPoster($data);
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Desain Poster. Silahkan Input Data Pembayaran');
 
-            return redirect()->to(base_url('pendaftaran/informasiPoster'));
+            $data_poster = $this->ModelDesainPoster->detailByEmail($data['email']);
+
+            return redirect()->to(base_url('pendaftaran/informasiPoster/' . $data_poster['id_pendaftaran_poster']));
         } else {
             //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
-            return redirect()->to(base_url('pendaftaran/inputDataPoster'));
+            return redirect()->back()->withInput();
         }
     }
+
+    public function informasiPoster($id_pendaftaran_poster)
+    {
+        $data = [
+            'title'     => 'Informasi Desain Poster',
+            'poster'    => $this->ModelDesainPoster->detail($id_pendaftaran_poster),
+            'isi'       => 'pendaftaran/poster/informasiPoster'
+        ];
+        return view('layout/v_wrapper', $data);
+    }
+    // ====================================================================
 
     public function inputDataPhotography()
     {
@@ -845,15 +854,6 @@ class Pendaftaran extends BaseController
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->to(base_url('pendaftaran/inputDataShortmovie'));
         }
-    }
-
-    public function informasiPoster()
-    {
-        $data = [
-            'title' => 'Informasi Pendaftaran Desain Poster',
-            'isi'   => 'pendaftaran/informasiPoster'
-        ];
-        return view('layout/v_wrapper', $data);
     }
 
     public function informasiPhotography()

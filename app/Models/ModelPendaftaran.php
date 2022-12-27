@@ -31,7 +31,7 @@ class ModelPendaftaran extends Model
 
     public function addPendaftaranPoster($data)
     {
-        $this->db->table('pendaftaran_poster')->insert($data);
+        $this->db->table('poster')->insert($data);
     }
 
     public function addPendaftaranPhotography($data)

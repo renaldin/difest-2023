@@ -9,7 +9,7 @@
 
             <div class="row">
                 <div class="col-12 text-center">
-                    <h5>Terimakasih, <strong>Alvin Triyanto</strong> </h5> <br>
+                    <h5>Terimakasih, <strong><?= $poster['nama_peserta'] ?></strong> </h5> <br>
                     <p>telah melakukan pendaftaran lomba <strong style="color: #B627A9; font-size:20px;">Desain
                             Poster</strong> Digital Festival Nasional 2023!</p>
                     <p>Untuk memastikan Anda sudah melakukan pendaftaran dengan baik, Anda wajib melakukan klik tombol
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <button class="btn btn-success">
-                        <a href="https://wa.link/edfvb5" class="" width="50%">
+                        <a href="https://wa.link/edfvb5" class="" width="50%" target="__blank">
                             <i class="fab fa-whatsapp"></i> Kirim Whatsapp
                         </a>
                     </button>
