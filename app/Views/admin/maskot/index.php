@@ -8,7 +8,7 @@
                         <form action="<?= base_url('desainmaskot') ?>" method="POST">
                             <div class="row">
                                 <div class="col-lg-6 mb-2">
-                                    <input type="text" name="keyword" class="form-control">
+                                    <input type="text" name="keyword" class="form-control" value="<?= $keyword ? $keyword : '' ?>">
                                 </div>
                                 <div class="col-lg-4 mb-2">
                                     <button type="submit" class="btn btn-primary" style="float: left;">Cari</button>

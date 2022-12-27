@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\ModelPendaftaran;
 use App\Models\ModelDesainMaskot;
+use App\Models\ModelDesainWeb;
 
 class Pendaftaran extends BaseController
 {
@@ -13,6 +14,7 @@ class Pendaftaran extends BaseController
         helper('download');
         $this->ModelPendaftaran = new ModelPendaftaran();
         $this->ModelDesainMaskot = new ModelDesainMaskot();
+        $this->ModelDesainWeb = new ModelDesainWeb();
     }
 
     public function index()
@@ -24,11 +26,13 @@ class Pendaftaran extends BaseController
         return view('layout/v_wrapper', $data);
     }
 
+    // ===================================================================
+    // Desain Web
     public function inputDataWeb()
     {
         $data = [
-            'title' => 'Input Data Pendaftaran Desain Web',
-            'isi'   => 'pendaftaran/inputDataWeb'
+            'title' => 'Pendaftaran Desain Web',
+            'isi'   => 'pendaftaran/web/inputDataWeb'
         ];
         return view('layout/v_wrapper', $data);
     }
@@ -38,7 +42,7 @@ class Pendaftaran extends BaseController
         $webValid = [
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required|is_unique[pendaftaran_web.email]',
+                'rules' => 'required|is_unique[web.email]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
                     'is_unique' => '{field} sudah ada. Silahkan input yang lain!!!.'
@@ -80,13 +84,6 @@ class Pendaftaran extends BaseController
                     'required' => '{field} wajib diisi.'
                 ]
             ],
-            'instagram_anggota1' => [
-                'label' => 'Instagram Anggota 1',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.'
-                ]
-            ],
             'scan_kartu_anggota1' => [
                 'label' => 'Scan Kartu Pelajar Anggota 1',
                 'rules' => 'uploaded[scan_kartu_anggota1]|max_size[scan_kartu_anggota1,1024]|mime_in[scan_kartu_anggota1,image/png,image/jpg,image/jpeg]',
@@ -113,13 +110,6 @@ class Pendaftaran extends BaseController
             ],
             'wa_anggota2' => [
                 'label' => 'Nomor Whatsapp Anggota 2',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.'
-                ]
-            ],
-            'instagram_anggota2' => [
-                'label' => 'Instagram Anggota 2',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -177,42 +167,40 @@ class Pendaftaran extends BaseController
         if ($this->validate($webValid)) {
             //jika valid
             //mengambil data foto di form
-            $scan_kartu_anggota1 = $this->request->getFile('scan_kartu_anggota1');
-            $scan_kartu_anggota2 = $this->request->getFile('scan_kartu_anggota2');
-            $bukti_igdifest = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
-            $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
+            $scan_kartu_anggota1    = $this->request->getFile('scan_kartu_anggota1');
+            $scan_kartu_anggota2    = $this->request->getFile('scan_kartu_anggota2');
+            $bukti_igdifest         = $this->request->getFile('bukti_igdifest');
+            $bukti_ighimmi          = $this->request->getFile('bukti_ighimmi');
+            $bukti_ythimmi          = $this->request->getFile('bukti_ythimmi');
+            $bukti_pembayaran       = $this->request->getFile('bukti_pembayaran');
             //mengganti nama 
-            $kartu_anggota1 = $scan_kartu_anggota1->getRandomName();
-            $kartu_anggota2 = $scan_kartu_anggota2->getRandomName();
-            $igdifest = $bukti_igdifest->getRandomName();
-            $ighimmi = $bukti_ighimmi->getRandomName();
-            $ythimmi = $bukti_ythimmi->getRandomName();
-            $pembayaran = $bukti_pembayaran->getRandomName();
+            $kartu_anggota1         = $scan_kartu_anggota1->getRandomName();
+            $kartu_anggota2         = $scan_kartu_anggota2->getRandomName();
+            $igdifest               = $bukti_igdifest->getRandomName();
+            $ighimmi                = $bukti_ighimmi->getRandomName();
+            $ythimmi                = $bukti_ythimmi->getRandomName();
+            $pembayaran             = $bukti_pembayaran->getRandomName();
 
             $data = [
-                'jenis_lomba' => $this->request->getPost('jenis_lomba'),
-                'email' => $this->request->getPost('email'),
-                'instansi' => $this->request->getPost('instansi'),
-                'nama_tim' => $this->request->getPost('nama_tim'),
+                'jenis_lomba'       => 'Desain Web',
+                'email'             => $this->request->getPost('email'),
+                'instansi'          => $this->request->getPost('instansi'),
+                'nama_tim'          => $this->request->getPost('nama_tim'),
                 // anggota1
-                'nama_anggota1' => $this->request->getPost('nama_anggota1'),
-                'alamat_anggota1' => $this->request->getPost('alamat_anggota1'),
-                'wa_anggota1' => $this->request->getPost('wa_anggota1'),
-                'instagram_anggota1' => $this->request->getPost('instagram_anggota1'),
-                'scan_kartu_anggota1' => $kartu_anggota1,
+                'nama_anggota1'         => $this->request->getPost('nama_anggota1'),
+                'alamat_anggota1'       => $this->request->getPost('alamat_anggota1'),
+                'wa_anggota1'           => $this->request->getPost('wa_anggota1'),
+                'scan_kartu_anggota1'   => $kartu_anggota1,
                 // anggota2
-                'nama_anggota2' => $this->request->getPost('nama_anggota2'),
-                'alamat_anggota2' => $this->request->getPost('alamat_anggota2'),
-                'wa_anggota2' => $this->request->getPost('wa_anggota2'),
-                'instagram_anggota2' => $this->request->getPost('instagram_anggota2'),
-                'scan_kartu_anggota2' => $kartu_anggota2,
+                'nama_anggota2'         => $this->request->getPost('nama_anggota2'),
+                'alamat_anggota2'       => $this->request->getPost('alamat_anggota2'),
+                'wa_anggota2'           => $this->request->getPost('wa_anggota2'),
+                'scan_kartu_anggota2'   => $kartu_anggota2,
                 // bukti
-                'bukti_igdifest' => $igdifest,
-                'bukti_ighimmi' => $ighimmi,
-                'bukti_ythimmi' => $ythimmi,
-                'bukti_pembayaran' => $pembayaran,
+                'bukti_igdifest'        => $igdifest,
+                'bukti_ighimmi'         => $ighimmi,
+                'bukti_ythimmi'         => $ythimmi,
+                'bukti_pembayaran'      => $pembayaran,
             ];
             // memindahkan lokasi foto
             $scan_kartu_anggota1->move('fotoweb', $kartu_anggota1);
@@ -225,13 +213,26 @@ class Pendaftaran extends BaseController
             $this->ModelPendaftaran->addPendaftaranWeb($data);
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Desain Web. Silahkan Input Data Pembayaran!!!');
 
-            return redirect()->to(base_url('pendaftaran/informasiWeb'));
+            $data_web = $this->ModelDesainWeb->detailByEmail($data['email']);
+
+            return redirect()->to(base_url('pendaftaran/informasiWeb/' . $data_web['id_pendaftaran_web']));
         } else {
             //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
-            return redirect()->to(base_url('pendaftaran/inputDataWeb'));
+            return redirect()->back()->withInput();
         }
     }
+
+    public function informasiWeb($id_pendaftaran_web)
+    {
+        $data = [
+            'title' => 'Informasi Desain Web',
+            'web'   => $this->ModelDesainWeb->detail($id_pendaftaran_web),
+            'isi'   => 'pendaftaran/web/informasiWeb'
+        ];
+        return view('layout/v_wrapper', $data);
+    }
+    // ===================================================================
 
     // ===================================================================
     // Desain Maskot
@@ -844,15 +845,6 @@ class Pendaftaran extends BaseController
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->to(base_url('pendaftaran/inputDataShortmovie'));
         }
-    }
-
-    public function informasiWeb()
-    {
-        $data = [
-            'title' => 'Informasi Pendaftaran Desain Web',
-            'isi'   => 'pendaftaran/informasiWeb'
-        ];
-        return view('layout/v_wrapper', $data);
     }
 
     public function informasiPoster()

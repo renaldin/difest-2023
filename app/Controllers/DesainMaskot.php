@@ -21,6 +21,7 @@ class DesainMaskot extends BaseController
             $data = [
                 'title'         => 'Desain Maskot',
                 'cari'          => 'Aktif',
+                'keyword'       => $keyword,
                 'desainMaskot'  => $this->ModelDesainMaskot->cariData($keyword),
                 'isi'           => 'admin/maskot/index'
             ];
@@ -28,6 +29,7 @@ class DesainMaskot extends BaseController
             $data = [
                 'title'         => 'Desain Maskot',
                 'cari'          => 'Tidak Aktif',
+                'keyword'       => '',
                 'desainMaskot'  => $this->ModelDesainMaskot->allData(),
                 'isi'           => 'admin/maskot/index'
             ];
@@ -39,7 +41,7 @@ class DesainMaskot extends BaseController
     {
         $data = [
             'title'             => 'Desain Maskot',
-            'desainmaskot'     => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
+            'desainmaskot'      => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
             'isi'               => 'admin/maskot/detail'
         ];
         return view('layoutAdmin/v_wrapper', $data);

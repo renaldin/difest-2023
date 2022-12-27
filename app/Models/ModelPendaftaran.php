@@ -21,7 +21,7 @@ class ModelPendaftaran extends Model
 
     public function addPendaftaranWeb($data)
     {
-        $this->db->table('pendaftaran_web')->insert($data);
+        $this->db->table('web')->insert($data);
     }
 
     public function addPendaftaranMaskot($data)

@@ -21,6 +21,7 @@ class DesainWeb extends BaseController
             $data = [
                 'title'         => 'Desain Web',
                 'cari'          => 'Aktif',
+                'keyword'       => $keyword,
                 'desainWeb'    => $this->ModelDesainWeb->cariData($keyword),
                 'isi'           => 'admin/web/index'
             ];
@@ -28,6 +29,7 @@ class DesainWeb extends BaseController
             $data = [
                 'title'         => 'Desain Web',
                 'cari'          => 'Tidak Aktif',
+                'keyword'       => '',
                 'desainWeb'    => $this->ModelDesainWeb->allData(),
                 'isi'           => 'admin/web/index'
             ];
@@ -38,10 +40,10 @@ class DesainWeb extends BaseController
     public function detail($id_pendaftaran_web)
     {
         $data = [
-            'title'     => 'Desain Web',
-            'desain_web'  => $this->ModelDesainWeb->detail($id_pendaftaran_web),
-            'isi'       => 'admin/web/detail'
+            'title'         => 'Desain Web',
+            'desainweb'     => $this->ModelDesainWeb->detail($id_pendaftaran_web),
+            'isi'           => 'admin/web/detail'
         ];
-        return view('layout/v_wrapper', $data);
+        return view('layoutAdmin/v_wrapper', $data);
     }
 }
