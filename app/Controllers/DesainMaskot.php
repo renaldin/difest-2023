@@ -38,10 +38,10 @@ class DesainMaskot extends BaseController
     public function detail($id_pendaftaran_maskot)
     {
         $data = [
-            'title'     => 'Desain Maskot',
-            'desain_maskot'  => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
-            'isi'       => 'admin/maskot/detail'
+            'title'             => 'Desain Maskot',
+            'desainmaskot'     => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
+            'isi'               => 'admin/maskot/detail'
         ];
-        return view('layout/v_wrapper', $data);
+        return view('layoutAdmin/v_wrapper', $data);
     }
 }

@@ -348,7 +348,7 @@ class Pendaftaran extends BaseController
             $pembayaran     = $bukti_pembayaran->getRandomName();
 
             $data = [
-                'jenis_lomba'       => $this->request->getPost('jenis_lomba'),
+                'jenis_lomba'       => 'Desain Maskot',
                 'email'             => $this->request->getPost('email'),
                 'nama_peserta'      => $this->request->getPost('nama_peserta'),
                 'alamat'            => $this->request->getPost('alamat'),

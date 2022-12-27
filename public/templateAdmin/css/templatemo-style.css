@@ -286,7 +286,7 @@ thead {
   background-color: #60738e;
   color: #fff;
   border-color: transparent;
-  box-shadow: 0 0 0 0.1rem rgb(180, 206, 233, 0.5);
+  /* box-shadow: 0 0 0 0.1rem rgb(180, 206, 233, 0.5); */
 }
 .form-group label {
   color: #fff;
