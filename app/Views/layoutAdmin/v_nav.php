@@ -24,7 +24,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="<?= base_url('desainmaskot') ?>">Desain Maskot</a>
               <a class="dropdown-item" href="<?= base_url('desainweb') ?>">Desain Web</a>
-              <a class="dropdown-item" href="#">Desain Poster</a>
+              <a class="dropdown-item" href="<?= base_url('desainposter') ?>">Desain Poster</a>
               <a class="dropdown-item" href="#">Photography</a>
               <a class="dropdown-item" href="#">Short Movie</a>
             </div>

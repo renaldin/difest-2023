@@ -59,7 +59,7 @@ class Filters extends BaseConfig
                 'user', 'user/*',
                 'desainmaskot', 'desainmaskot/*',
                 'desainweb', 'desainweb/*',
-                'desain_poster', 'desain_poster/*',
+                'desainposter', 'desainposter/*',
                 'photography', 'photography/*',
             ]],
             'filterpanitia' => ['except' => [
@@ -70,7 +70,7 @@ class Filters extends BaseConfig
                 '/',
                 'desainmaskot', 'desainmaskot/*',
                 'desainweb', 'desainweb/*',
-                'desain_poster', 'desain_poster/*',
+                'desainposter', 'desainposter/*',
                 'photography', 'photography/*',
             ]],
             'toolbar',
