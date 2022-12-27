@@ -38,11 +38,11 @@
                             foreach ($desainMaskot as $item) { ?>
                                 <tr>
                                     <td><?= $no++ ?></td>
-                                    <td class="tm-product-name"><?= $item['nama_lengkap'] ?></td>
-                                    <td class="tm-product-name"><?= $item['alamat'] ?></td>
-                                    <td class="tm-product-name"><?= $item['instansi'] ?></td>
+                                    <td><?= $item['nama_peserta'] ?></td>
+                                    <td><?= $item['alamat'] ?></td>
+                                    <td><?= $item['instansi'] ?></td>
                                     <td class="text-center">
-                                        <button type="button" style="cursor: pointer;" class="tm-product-delete-link mb-1" data-toggle="modal" data-target="#edit<?= $item['id_user'] ?>">
+                                        <button type="button" style="cursor: pointer;" class="tm-product-delete-link mb-1" data-toggle="modal" data-target="#edit<?= $item['id_pendaftaran_maskot'] ?>">
                                             <i class="fa fa-eye tm-product-delete-icon"></i>
                                         </button>
                                     </td>

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\ModelPendaftaran;
+use App\Models\ModelDesainMaskot;
 
 class Pendaftaran extends BaseController
 {
@@ -11,7 +12,9 @@ class Pendaftaran extends BaseController
         helper('form');
         helper('download');
         $this->ModelPendaftaran = new ModelPendaftaran();
+        $this->ModelDesainMaskot = new ModelDesainMaskot();
     }
+
     public function index()
     {
         $data = [
@@ -230,11 +233,13 @@ class Pendaftaran extends BaseController
         }
     }
 
+    // ===================================================================
+    // Desain Maskot
     public function inputDataMaskot()
     {
         $data = [
-            'title' => 'Input Data Pendaftaran Desain Maskot',
-            'isi'   => 'pendaftaran/inputDataMaskot'
+            'title' => 'Pendaftaran Desain Maskot',
+            'isi'   => 'pendaftaran/maskot/inputDataMaskot'
         ];
         return view('layout/v_wrapper', $data);
     }
@@ -244,13 +249,13 @@ class Pendaftaran extends BaseController
         $maskotValid = [
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required|is_unique[pendaftaran_maskot.email]',
+                'rules' => 'required|is_unique[maskot.email]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
                     'is_unique' => '{field} sudah ada. Silahkan input yang lain!!!.'
                 ]
             ],
-            'nama_lengkap' => [
+            'nama_peserta' => [
                 'label' => 'Nama Lengkap',
                 'rules' => 'required',
                 'errors' => [
@@ -273,13 +278,6 @@ class Pendaftaran extends BaseController
             ],
             'wa' => [
                 'label' => 'Nomor Whatsapp',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.'
-                ]
-            ],
-            'instagram' => [
-                'label' => 'Instagram',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -337,35 +335,33 @@ class Pendaftaran extends BaseController
         if ($this->validate($maskotValid)) {
             //jika valid
             //mengambil data foto di form
-            $scan_kartu = $this->request->getFile('scan_kartu');
-            $bukti_igdifest = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
-            $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
+            $scan_kartu         = $this->request->getFile('scan_kartu');
+            $bukti_igdifest     = $this->request->getFile('bukti_igdifest');
+            $bukti_ighimmi      = $this->request->getFile('bukti_ighimmi');
+            $bukti_ythimmi      = $this->request->getFile('bukti_ythimmi');
+            $bukti_pembayaran   = $this->request->getFile('bukti_pembayaran');
             //mengganti nama 
-            $kartu_anggota = $scan_kartu->getRandomName();
-            $igdifest = $bukti_igdifest->getRandomName();
-            $ighimmi = $bukti_ighimmi->getRandomName();
-            $ythimmi = $bukti_ythimmi->getRandomName();
-            $pembayaran = $bukti_pembayaran->getRandomName();
+            $kartu          = $scan_kartu->getRandomName();
+            $igdifest       = $bukti_igdifest->getRandomName();
+            $ighimmi        = $bukti_ighimmi->getRandomName();
+            $ythimmi        = $bukti_ythimmi->getRandomName();
+            $pembayaran     = $bukti_pembayaran->getRandomName();
 
             $data = [
-                'jenis_lomba' => $this->request->getPost('jenis_lomba'),
-                'email' => $this->request->getPost('email'),
-                'nama_lengkap' => $this->request->getPost('nama_lengkap'),
-                'alamat' => $this->request->getPost('alamat'),
-                'instansi' => $this->request->getPost('instansi'),
-                'wa' => $this->request->getPost('wa'),
-                'instagram' => $this->request->getPost('instagram'),
-                'scan_kartu' => $kartu_anggota,
-                // bukti
-                'bukti_igdifest' => $igdifest,
-                'bukti_ighimmi' => $ighimmi,
-                'bukti_ythimmi' => $ythimmi,
-                'bukti_pembayaran' => $pembayaran,
+                'jenis_lomba'       => $this->request->getPost('jenis_lomba'),
+                'email'             => $this->request->getPost('email'),
+                'nama_peserta'      => $this->request->getPost('nama_peserta'),
+                'alamat'            => $this->request->getPost('alamat'),
+                'instansi'          => $this->request->getPost('instansi'),
+                'wa'                => $this->request->getPost('wa'),
+                'scan_kartu'        => $kartu,
+                'bukti_igdifest'    => $igdifest,
+                'bukti_ighimmi'     => $ighimmi,
+                'bukti_ythimmi'     => $ythimmi,
+                'bukti_pembayaran'  => $pembayaran,
             ];
             // memindahkan lokasi foto
-            $scan_kartu->move('fotomaskot', $kartu_anggota);
+            $scan_kartu->move('fotomaskot', $kartu);
             $bukti_igdifest->move('fotomaskot', $igdifest);
             $bukti_ighimmi->move('fotomaskot', $ighimmi);
             $bukti_ythimmi->move('fotomaskot', $ythimmi);
@@ -374,13 +370,25 @@ class Pendaftaran extends BaseController
             $this->ModelPendaftaran->addPendaftaranMaskot($data);
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Desain Maskot. Silahkan Input Data Pembayaran!!!');
 
-            return redirect()->to(base_url('pendaftaran/informasiMaskot'));
+            $data_maskot = $this->ModelDesainMaskot->detailByEmail($data['email']);
+
+            return redirect()->to(base_url('pendaftaran/informasiMaskot/' . $data_maskot['id_pendaftaran_maskot']));
         } else {
-            //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
-            return redirect()->to(base_url('pendaftaran/inputDataMaskot'));
+            return redirect()->back()->withInput();
         }
     }
+
+    public function informasiMaskot($id_pendaftaran_maskot)
+    {
+        $data = [
+            'title' => 'Informasi Desain Maskot',
+            'maskot' => $this->ModelDesainMaskot->detail($id_pendaftaran_maskot),
+            'isi'   => 'pendaftaran/maskot/informasiMaskot'
+        ];
+        return view('layout/v_wrapper', $data);
+    }
+    // ===================================================================
 
     public function inputDataPoster()
     {
@@ -685,6 +693,7 @@ class Pendaftaran extends BaseController
             return redirect()->to(base_url('pendaftaran/inputDataPhotography'));
         }
     }
+
     public function inputDataShortmovie()
     {
         $data = [
@@ -846,15 +855,6 @@ class Pendaftaran extends BaseController
         return view('layout/v_wrapper', $data);
     }
 
-    public function informasiMaskot()
-    {
-        $data = [
-            'title' => 'Informasi Pendaftaran Desain Maskot',
-            'isi'   => 'pendaftaran/informasiMaskot'
-        ];
-        return view('layout/v_wrapper', $data);
-    }
-
     public function informasiPoster()
     {
         $data = [
@@ -872,6 +872,7 @@ class Pendaftaran extends BaseController
         ];
         return view('layout/v_wrapper', $data);
     }
+
     public function informasiShortmovie()
     {
         $data = [
@@ -896,6 +897,7 @@ class Pendaftaran extends BaseController
 
         return $this->response->download($nama, $data);
     }
+
     public function downloadGuideDesainPoster()
     {
         $data = file_get_contents(base_url('pdf/Guidebook_Desain_Poster.pdf'));
@@ -903,6 +905,7 @@ class Pendaftaran extends BaseController
 
         return $this->response->download($nama, $data);
     }
+
     public function downloadGuidePhotography()
     {
         $data = file_get_contents(base_url('pdf/Guidebook_Fotografi.pdf'));
