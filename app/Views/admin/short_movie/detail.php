@@ -3,6 +3,7 @@
         <div class="tm-block-col tm-col-account-settings">
             <div class="tm-bg-primary-dark tm-block tm-block-settings">
                 <h2 class="tm-block-title">Data Peserta <?= $shortmovie['jenis_lomba'] ?></h2>
+                <h2 class="tm-block-title">Tanggal Daftar : <?= $shortmovie['tanggal'] ?></h2>
                 <form class="tm-signup-form row">
                     <div class="form-group col-lg-6">
                         <label for="nama_tim">Nama Tim</label>

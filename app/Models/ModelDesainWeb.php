@@ -37,4 +37,10 @@ class ModelDesainWeb extends Model
             ->where('email', $email)
             ->get()->getRowArray();
     }
+
+    public function jumlahPendaftaran()
+    {
+        return $this->db->table('web')
+            ->countAllResults();
+    }
 }

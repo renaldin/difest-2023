@@ -50,7 +50,7 @@
                 type: "pie",
                 data: {
                     datasets: [{
-                        data: [18, 5, 10, 10, 5],
+                        data: [<?= $jumlahmaskot ?>, <?= $jumlahweb ?>, <?= $jumlahposter ?>, <?= $jumlahphotography ?>, <?= $jumlahshortmovie ?>],
                         backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582", "#d024bc", "#207cfc"],
                         label: "Storage"
                     }],

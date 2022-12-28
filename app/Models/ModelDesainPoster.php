@@ -37,4 +37,10 @@ class ModelDesainPoster extends Model
             ->where('email', $email)
             ->get()->getRowArray();
     }
+
+    public function jumlahPendaftaran()
+    {
+        return $this->db->table('poster')
+            ->countAllResults();
+    }
 }

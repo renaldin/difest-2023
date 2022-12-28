@@ -3,6 +3,11 @@
 namespace App\Controllers;
 
 use App\Models\ModelUser;
+use App\Models\ModelDesainMaskot;
+use App\Models\ModelDesainWeb;
+use App\Models\ModelDesainPoster;
+use App\Models\ModelPhotography;
+use App\Models\ModelShortMovie;
 
 
 class User extends BaseController
@@ -12,6 +17,11 @@ class User extends BaseController
     {
         helper('form');
         $this->ModelUser = new ModelUser();
+        $this->ModelDesainMaskot        = new ModelDesainMaskot();
+        $this->ModelDesainWeb           = new ModelDesainWeb();
+        $this->ModelDesainPoster        = new ModelDesainPoster();
+        $this->ModelPhotography         = new ModelPhotography();
+        $this->ModelShortMovie          = new ModelShortMovie();
     }
 
 
@@ -23,6 +33,11 @@ class User extends BaseController
                 'title'     => 'Pengguna',
                 'cari'      => 'Aktif',
                 'user'      => $this->ModelUser->cariData($keyword),
+                'jumlahmaskot'        => $this->ModelDesainMaskot->jumlahPendaftaran(),
+                'jumlahweb'           => $this->ModelDesainWeb->jumlahPendaftaran(),
+                'jumlahposter'        => $this->ModelDesainPoster->jumlahPendaftaran(),
+                'jumlahphotography'   => $this->ModelPhotography->jumlahPendaftaran(),
+                'jumlahshortmovie'    => $this->ModelShortMovie->jumlahPendaftaran(),
                 'isi'       => 'admin/user'
             ];
         } else {
@@ -30,6 +45,11 @@ class User extends BaseController
                 'title'     => 'Pengguna',
                 'cari'      => 'Tidak Aktif',
                 'user'      => $this->ModelUser->allData(),
+                'jumlahmaskot'        => $this->ModelDesainMaskot->jumlahPendaftaran(),
+                'jumlahweb'           => $this->ModelDesainWeb->jumlahPendaftaran(),
+                'jumlahposter'        => $this->ModelDesainPoster->jumlahPendaftaran(),
+                'jumlahphotography'   => $this->ModelPhotography->jumlahPendaftaran(),
+                'jumlahshortmovie'    => $this->ModelShortMovie->jumlahPendaftaran(),
                 'isi'       => 'admin/user'
             ];
         }

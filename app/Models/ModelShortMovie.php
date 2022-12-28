@@ -37,4 +37,10 @@ class ModelShortMovie extends Model
             ->where('email', $email)
             ->get()->getRowArray();
     }
+
+    public function jumlahPendaftaran()
+    {
+        return $this->db->table('short_movie')
+            ->countAllResults();
+    }
 }

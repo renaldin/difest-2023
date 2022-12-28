@@ -37,4 +37,10 @@ class ModelPhotography extends Model
             ->where('email', $email)
             ->get()->getRowArray();
     }
+
+    public function jumlahPendaftaran()
+    {
+        return $this->db->table('photography')
+            ->countAllResults();
+    }
 }
