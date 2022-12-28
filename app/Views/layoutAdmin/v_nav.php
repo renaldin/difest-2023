@@ -17,7 +17,7 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle <?= $title === 'Desain Maskot' || $title === 'Desain Web' ? 'active' : '' ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle <?= $title === 'Desain Maskot' || $title === 'Desain Web' || $title === 'Short Movie' || $title === 'Desain Poster' || $title === 'Photography' ? 'active' : '' ?>" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-cog"></i>
               <span> Lomba <i class="fas fa-angle-down"></i> </span>
             </a>
@@ -26,7 +26,7 @@
               <a class="dropdown-item" href="<?= base_url('desainweb') ?>">Desain Web</a>
               <a class="dropdown-item" href="<?= base_url('desainposter') ?>">Desain Poster</a>
               <a class="dropdown-item" href="<?= base_url('photography') ?>">Photography</a>
-              <a class="dropdown-item" href="#">Short Movie</a>
+              <a class="dropdown-item" href="<?= base_url('shortmovie') ?>">Short Movie</a>
             </div>
           </li>
           <?php if (session()->get('role') === 'Admin') { ?>
