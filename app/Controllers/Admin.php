@@ -24,14 +24,14 @@ class Admin extends BaseController
     public function index()
     {
         $data = [
-            'title'         => 'Admin',
+            'title'               => 'Admin',
             'jumlahmaskot'        => $this->ModelDesainMaskot->jumlahPendaftaran(),
             'jumlahweb'           => $this->ModelDesainWeb->jumlahPendaftaran(),
             'jumlahposter'        => $this->ModelDesainPoster->jumlahPendaftaran(),
             'jumlahphotography'   => $this->ModelPhotography->jumlahPendaftaran(),
             'jumlahshortmovie'    => $this->ModelShortMovie->jumlahPendaftaran(),
             'log'                 => $this->ModelLog->allData(),
-            'isi'           => 'admin/admin'
+            'isi'                 => 'admin/admin'
         ];
         return view('layoutAdmin/v_wrapper', $data);
     }

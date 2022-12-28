@@ -171,15 +171,13 @@ class Pendaftaran extends BaseController
         ];
 
         if ($this->validate($webValid)) {
-            //jika valid
-            //mengambil data foto di form
             $scan_kartu_anggota1    = $this->request->getFile('scan_kartu_anggota1');
             $scan_kartu_anggota2    = $this->request->getFile('scan_kartu_anggota2');
             $bukti_igdifest         = $this->request->getFile('bukti_igdifest');
             $bukti_ighimmi          = $this->request->getFile('bukti_ighimmi');
             $bukti_ythimmi          = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran       = $this->request->getFile('bukti_pembayaran');
-            //mengganti nama 
+
             $kartu_anggota1         = $scan_kartu_anggota1->getRandomName();
             $kartu_anggota2         = $scan_kartu_anggota2->getRandomName();
             $igdifest               = $bukti_igdifest->getRandomName();
@@ -192,23 +190,23 @@ class Pendaftaran extends BaseController
                 'email'             => $this->request->getPost('email'),
                 'instansi'          => $this->request->getPost('instansi'),
                 'nama_tim'          => $this->request->getPost('nama_tim'),
-                // anggota1
+
                 'nama_anggota1'         => $this->request->getPost('nama_anggota1'),
                 'alamat_anggota1'       => $this->request->getPost('alamat_anggota1'),
                 'wa_anggota1'           => $this->request->getPost('wa_anggota1'),
                 'scan_kartu_anggota1'   => $kartu_anggota1,
-                // anggota2
+
                 'nama_anggota2'         => $this->request->getPost('nama_anggota2'),
                 'alamat_anggota2'       => $this->request->getPost('alamat_anggota2'),
                 'wa_anggota2'           => $this->request->getPost('wa_anggota2'),
                 'scan_kartu_anggota2'   => $kartu_anggota2,
-                // bukti
+
                 'bukti_igdifest'        => $igdifest,
                 'bukti_ighimmi'         => $ighimmi,
                 'bukti_ythimmi'         => $ythimmi,
                 'bukti_pembayaran'      => $pembayaran,
             ];
-            // memindahkan lokasi foto
+
             $scan_kartu_anggota1->move('fotoweb', $kartu_anggota1);
             $scan_kartu_anggota2->move('fotoweb', $kartu_anggota2);
             $bukti_igdifest->move('fotoweb', $igdifest);
@@ -340,14 +338,13 @@ class Pendaftaran extends BaseController
         ];
 
         if ($this->validate($maskotValid)) {
-            //jika valid
-            //mengambil data foto di form
+
             $scan_kartu         = $this->request->getFile('scan_kartu');
             $bukti_igdifest     = $this->request->getFile('bukti_igdifest');
             $bukti_ighimmi      = $this->request->getFile('bukti_ighimmi');
             $bukti_ythimmi      = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran   = $this->request->getFile('bukti_pembayaran');
-            //mengganti nama 
+
             $kartu          = $scan_kartu->getRandomName();
             $igdifest       = $bukti_igdifest->getRandomName();
             $ighimmi        = $bukti_ighimmi->getRandomName();
@@ -367,7 +364,7 @@ class Pendaftaran extends BaseController
                 'bukti_ythimmi'     => $ythimmi,
                 'bukti_pembayaran'  => $pembayaran,
             ];
-            // memindahkan lokasi foto
+
             $scan_kartu->move('fotomaskot', $kartu);
             $bukti_igdifest->move('fotomaskot', $igdifest);
             $bukti_ighimmi->move('fotomaskot', $ighimmi);
@@ -457,7 +454,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
 
-            // bukti
+
             'bukti_igdifest' => [
                 'label' => 'Bukti Follow Instagram difest2021',
                 'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
@@ -497,14 +494,13 @@ class Pendaftaran extends BaseController
         ];
 
         if ($this->validate($posterValid)) {
-            //jika valid
-            //mengambil data foto di form
+
             $scan_kartu = $this->request->getFile('scan_kartu');
             $bukti_igdifest = $this->request->getFile('bukti_igdifest');
             $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
             $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
-            //mengganti nama 
+
             $kartu_anggota = $scan_kartu->getRandomName();
             $igdifest = $bukti_igdifest->getRandomName();
             $ighimmi = $bukti_ighimmi->getRandomName();
@@ -519,13 +515,13 @@ class Pendaftaran extends BaseController
                 'instansi'      => $this->request->getPost('instansi'),
                 'wa'            => $this->request->getPost('wa'),
                 'scan_kartu'    => $kartu_anggota,
-                // bukti
+
                 'bukti_igdifest' => $igdifest,
                 'bukti_ighimmi' => $ighimmi,
                 'bukti_ythimmi' => $ythimmi,
                 'bukti_pembayaran' => $pembayaran,
             ];
-            // memindahkan lokasi foto
+
             $scan_kartu->move('fotoposter', $kartu_anggota);
             $bukti_igdifest->move('fotoposter', $igdifest);
             $bukti_ighimmi->move('fotoposter', $ighimmi);
@@ -539,7 +535,6 @@ class Pendaftaran extends BaseController
 
             return redirect()->to(base_url('pendaftaran/informasiPoster/' . $data_poster['id_pendaftaran_poster']));
         } else {
-            //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->back()->withInput();
         }
@@ -616,7 +611,6 @@ class Pendaftaran extends BaseController
                 ]
             ],
 
-            // bukti
             'bukti_igdifest' => [
                 'label' => 'Bukti Follow Instagram difest2021',
                 'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
@@ -656,14 +650,13 @@ class Pendaftaran extends BaseController
         ];
 
         if ($this->validate($photographyValid)) {
-            //jika valid
-            //mengambil data foto di form
+
             $scan_kartu = $this->request->getFile('scan_kartu');
             $bukti_igdifest = $this->request->getFile('bukti_igdifest');
             $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
             $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
-            //mengganti nama 
+
             $kartu_anggota = $scan_kartu->getRandomName();
             $igdifest = $bukti_igdifest->getRandomName();
             $ighimmi = $bukti_ighimmi->getRandomName();
@@ -678,13 +671,13 @@ class Pendaftaran extends BaseController
                 'instansi' => $this->request->getPost('instansi'),
                 'wa' => $this->request->getPost('wa'),
                 'scan_kartu' => $kartu_anggota,
-                // bukti
+
                 'bukti_igdifest' => $igdifest,
                 'bukti_ighimmi' => $ighimmi,
                 'bukti_ythimmi' => $ythimmi,
                 'bukti_pembayaran' => $pembayaran,
             ];
-            // memindahkan lokasi foto
+
             $scan_kartu->move('fotophotography', $kartu_anggota);
             $bukti_igdifest->move('fotophotography', $igdifest);
             $bukti_ighimmi->move('fotophotography', $ighimmi);
@@ -698,7 +691,6 @@ class Pendaftaran extends BaseController
 
             return redirect()->to(base_url('pendaftaran/informasiPhotography/' . $data_photography['id_pendaftaran_photography']));
         } else {
-            //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->back()->withInput();
         }

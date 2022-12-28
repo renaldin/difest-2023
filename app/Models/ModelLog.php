@@ -14,4 +14,9 @@ class ModelLog extends Model
             ->limit(9)
             ->get()->getResultArray();
     }
+
+    public function add($data)
+    {
+        $this->db->table('log')->insert($data);
+    }
 }
