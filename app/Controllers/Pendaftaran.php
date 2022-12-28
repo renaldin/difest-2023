@@ -8,6 +8,7 @@ use App\Models\ModelDesainWeb;
 use App\Models\ModelDesainPoster;
 use App\Models\ModelPhotography;
 use App\Models\ModelShortMovie;
+use App\Models\ModelLog;
 
 class Pendaftaran extends BaseController
 {
@@ -21,6 +22,7 @@ class Pendaftaran extends BaseController
         $this->ModelDesainPoster        = new ModelDesainPoster();
         $this->ModelPhotography         = new ModelPhotography();
         $this->ModelShortMovie          = new ModelShortMovie();
+        $this->ModelLog                 = new ModelLog();
     }
 
     public function index()
@@ -219,6 +221,12 @@ class Pendaftaran extends BaseController
 
             $data_web = $this->ModelDesainWeb->detailByEmail($data['email']);
 
+            $data_log = [
+                'nama'  => $data_web['nama_tim'],
+                'jenis_lomba'   => $data_web['jenis_lomba']
+            ];
+            $this->ModelLog->add($data_log);
+
             return redirect()->to(base_url('pendaftaran/informasiWeb/' . $data_web['id_pendaftaran_web']));
         } else {
             //jika tidak valid
@@ -375,6 +383,12 @@ class Pendaftaran extends BaseController
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Desain Maskot. Silahkan Input Data Pembayaran!!!');
 
             $data_maskot = $this->ModelDesainMaskot->detailByEmail($data['email']);
+
+            $data_log = [
+                'nama'  => $data_maskot['nama_peserta'],
+                'jenis_lomba'   => $data_maskot['jenis_lomba']
+            ];
+            $this->ModelLog->add($data_log);
 
             return redirect()->to(base_url('pendaftaran/informasiMaskot/' . $data_maskot['id_pendaftaran_maskot']));
         } else {
@@ -533,6 +547,12 @@ class Pendaftaran extends BaseController
 
             $data_poster = $this->ModelDesainPoster->detailByEmail($data['email']);
 
+            $data_log = [
+                'nama'  => $data_poster['nama_peserta'],
+                'jenis_lomba'   => $data_poster['jenis_lomba']
+            ];
+            $this->ModelLog->add($data_log);
+
             return redirect()->to(base_url('pendaftaran/informasiPoster/' . $data_poster['id_pendaftaran_poster']));
         } else {
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
@@ -688,6 +708,12 @@ class Pendaftaran extends BaseController
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Photography. Silahkan Input Data Pembayaran');
 
             $data_photography = $this->ModelPhotography->detailByEmail($data['email']);
+
+            $data_log = [
+                'nama'  => $data_photography['nama_peserta'],
+                'jenis_lomba'   => $data_photography['jenis_lomba']
+            ];
+            $this->ModelLog->add($data_log);
 
             return redirect()->to(base_url('pendaftaran/informasiPhotography/' . $data_photography['id_pendaftaran_photography']));
         } else {
@@ -950,6 +976,12 @@ class Pendaftaran extends BaseController
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Short Movie. Silahkan Input Data Pembayaran!!!');
 
             $data_short_movie = $this->ModelShortMovie->detailByEmail($data['email']);
+
+            $data_log = [
+                'nama'  => $data_short_movie['nama_tim'],
+                'jenis_lomba'   => $data_short_movie['jenis_lomba']
+            ];
+            $this->ModelLog->add($data_log);
 
             return redirect()->to(base_url('pendaftaran/informasiShortMovie/' . $data_short_movie['id_pendaftaran_movie']));
         } else {
