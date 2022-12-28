@@ -17,8 +17,16 @@
   <div class="row">
     <div class="col-lg-12">
       <!-- ***** Most Popular Start ***** -->
-      <div class="name-page">
-        <h4>Desain Maskot</h4>
+      <div class="child-banner">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header-text">
+              <div class="name-page">
+                <h4>Desain Maskot</h4>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- ***** Most Popular End ***** -->
       <div class="page-content mt-4">
