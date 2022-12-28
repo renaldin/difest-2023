@@ -6,6 +6,7 @@ use App\Models\ModelPendaftaran;
 use App\Models\ModelDesainMaskot;
 use App\Models\ModelDesainWeb;
 use App\Models\ModelDesainPoster;
+use App\Models\ModelPhotography;
 
 class Pendaftaran extends BaseController
 {
@@ -13,10 +14,11 @@ class Pendaftaran extends BaseController
     {
         helper('form');
         helper('download');
-        $this->ModelPendaftaran     = new ModelPendaftaran();
-        $this->ModelDesainMaskot    = new ModelDesainMaskot();
-        $this->ModelDesainWeb       = new ModelDesainWeb();
-        $this->ModelDesainPoster    = new ModelDesainPoster();
+        $this->ModelPendaftaran         = new ModelPendaftaran();
+        $this->ModelDesainMaskot        = new ModelDesainMaskot();
+        $this->ModelDesainWeb           = new ModelDesainWeb();
+        $this->ModelDesainPoster        = new ModelDesainPoster();
+        $this->ModelPhotography   = new ModelPhotography();
     }
 
     public function index()
@@ -552,11 +554,13 @@ class Pendaftaran extends BaseController
     }
     // ====================================================================
 
+    // ====================================================================
+    // Photography
     public function inputDataPhotography()
     {
         $data = [
-            'title' => 'Input Data Pendaftaran Photography',
-            'isi'   => 'pendaftaran/inputDataPhotography'
+            'title' => 'Pendaftaran Photography',
+            'isi'   => 'pendaftaran/photography/inputDataPhotography'
         ];
         return view('layout/v_wrapper', $data);
     }
@@ -566,13 +570,13 @@ class Pendaftaran extends BaseController
         $photographyValid = [
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required|is_unique[pendaftaran_poster.email]',
+                'rules' => 'required|is_unique[photography.email]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
                     'is_unique' => '{field} sudah ada. Silahkan input yang lain!!!.'
                 ]
             ],
-            'nama_lengkap' => [
+            'nama_peserta' => [
                 'label' => 'Nama Lengkap',
                 'rules' => 'required',
                 'errors' => [
@@ -595,13 +599,6 @@ class Pendaftaran extends BaseController
             ],
             'wa' => [
                 'label' => 'Nomor Whatsapp',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.'
-                ]
-            ],
-            'instagram' => [
-                'label' => 'Instagram',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -672,13 +669,12 @@ class Pendaftaran extends BaseController
             $pembayaran = $bukti_pembayaran->getRandomName();
 
             $data = [
-                'jenis_lomba' => $this->request->getPost('jenis_lomba'),
+                'jenis_lomba' => 'Photography',
                 'email' => $this->request->getPost('email'),
-                'nama_lengkap' => $this->request->getPost('nama_lengkap'),
+                'nama_peserta' => $this->request->getPost('nama_peserta'),
                 'alamat' => $this->request->getPost('alamat'),
                 'instansi' => $this->request->getPost('instansi'),
                 'wa' => $this->request->getPost('wa'),
-                'instagram' => $this->request->getPost('instagram'),
                 'scan_kartu' => $kartu_anggota,
                 // bukti
                 'bukti_igdifest' => $igdifest,
@@ -696,13 +692,26 @@ class Pendaftaran extends BaseController
             $this->ModelPendaftaran->addPendaftaranPhotography($data);
             session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Photography. Silahkan Input Data Pembayaran');
 
-            return redirect()->to(base_url('pendaftaran/informasiPhotography'));
+            $data_photography = $this->ModelPhotography->detailByEmail($data['email']);
+
+            return redirect()->to(base_url('pendaftaran/informasiPhotography/' . $data_photography['id_pendaftaran_photography']));
         } else {
             //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
-            return redirect()->to(base_url('pendaftaran/inputDataPhotography'));
+            return redirect()->back()->withInput();
         }
     }
+
+    public function informasiPhotography($id_pendaftaran_photography)
+    {
+        $data = [
+            'title'         => 'Informasi Photography',
+            'photography'   => $this->ModelPhotography->detail($id_pendaftaran_photography),
+            'isi'           => 'pendaftaran/photography/informasiPhotography',
+        ];
+        return view('layout/v_wrapper', $data);
+    }
+    // ====================================================================
 
     public function inputDataShortmovie()
     {
@@ -854,15 +863,6 @@ class Pendaftaran extends BaseController
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
             return redirect()->to(base_url('pendaftaran/inputDataShortmovie'));
         }
-    }
-
-    public function informasiPhotography()
-    {
-        $data = [
-            'title' => 'Informasi Pendaftaran Photography',
-            'isi'   => 'pendaftaran/informasiPhotography',
-        ];
-        return view('layout/v_wrapper', $data);
     }
 
     public function informasiShortmovie()

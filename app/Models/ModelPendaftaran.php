@@ -36,7 +36,7 @@ class ModelPendaftaran extends Model
 
     public function addPendaftaranPhotography($data)
     {
-        $this->db->table('pendaftaran_photography')->insert($data);
+        $this->db->table('photography')->insert($data);
     }
 
     public function delete_data($data)
