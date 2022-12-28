@@ -61,6 +61,7 @@ class Filters extends BaseConfig
                 'desainweb', 'desainweb/*',
                 'desainposter', 'desainposter/*',
                 'photography', 'photography/*',
+                'shortmovie', 'photography/*',
             ]],
             'filterpanitia' => ['except' => [
                 'admin', 'admin/*',
@@ -72,6 +73,7 @@ class Filters extends BaseConfig
                 'desainweb', 'desainweb/*',
                 'desainposter', 'desainposter/*',
                 'photography', 'photography/*',
+                'shortmovie', 'shortmovie/*',
             ]],
             'toolbar',
             // 'honeypot',

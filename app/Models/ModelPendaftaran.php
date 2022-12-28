@@ -39,6 +39,11 @@ class ModelPendaftaran extends Model
         $this->db->table('photography')->insert($data);
     }
 
+    public function addPendaftaranShortMovie($data)
+    {
+        $this->db->table('short_movie')->insert($data);
+    }
+
     public function delete_data($data)
     {
         $this->db->table('pendaftaran_web')->where('id_pendaftaran_web', $data['id_pendaftaran_web'])->delete($data);

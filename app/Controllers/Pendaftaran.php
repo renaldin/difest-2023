@@ -7,6 +7,7 @@ use App\Models\ModelDesainMaskot;
 use App\Models\ModelDesainWeb;
 use App\Models\ModelDesainPoster;
 use App\Models\ModelPhotography;
+use App\Models\ModelShortMovie;
 
 class Pendaftaran extends BaseController
 {
@@ -18,7 +19,8 @@ class Pendaftaran extends BaseController
         $this->ModelDesainMaskot        = new ModelDesainMaskot();
         $this->ModelDesainWeb           = new ModelDesainWeb();
         $this->ModelDesainPoster        = new ModelDesainPoster();
-        $this->ModelPhotography   = new ModelPhotography();
+        $this->ModelPhotography         = new ModelPhotography();
+        $this->ModelShortMovie          = new ModelShortMovie();
     }
 
     public function index()
@@ -713,35 +715,30 @@ class Pendaftaran extends BaseController
     }
     // ====================================================================
 
-    public function inputDataShortmovie()
+    // ====================================================================
+    // Short Movie
+    public function inputDataShortMovie()
     {
         $data = [
-            'title' => 'Input Data Pendaftaran Short Movie',
-            'isi'   => 'pendaftaran/inputDataShortmovie'
+            'title' => 'Pendaftaran Short Movie',
+            'isi'   => 'pendaftaran/short_movie/inputDataShortmovie'
         ];
         return view('layout/v_wrapper', $data);
     }
 
-    public function insertDataShortmovie()
+    public function insertDataShortMovie()
     {
-        $shortmovieValid = [
+        $shortMovieValid = [
             'email' => [
                 'label' => 'Email',
-                'rules' => 'required|is_unique[pendaftaran_shortmovie.email]',
+                'rules' => 'required|is_unique[short_movie.email]',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
                     'is_unique' => '{field} sudah ada. Silahkan input yang lain!!!.'
                 ]
             ],
-            'nama_lengkap' => [
-                'label' => 'Nama Lengkap',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} wajib diisi.',
-                ]
-            ],
-            'alamat' => [
-                'label' => 'Alamat',
+            'nama_tim' => [
+                'label' => 'Nama Tim',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.',
@@ -761,18 +758,92 @@ class Pendaftaran extends BaseController
                     'required' => '{field} wajib diisi.'
                 ]
             ],
-            'instagram' => [
-                'label' => 'Instagram',
+            // amggota 1
+            'nama_anggota1' => [
+                'label' => 'Nama Anggota 1',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
                 ]
             ],
-            'scan_kartu' => [
-                'label' => 'Scan Kartu Pelajar',
-                'rules' => 'uploaded[scan_kartu]|max_size[scan_kartu,1024]|mime_in[scan_kartu,image/png,image/jpg,image/jpeg]',
+            'alamat_anggota1' => [
+                'label' => 'Alamat Anggota 1',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi.'
+                ]
+            ],
+            'scan_kartu_anggota1' => [
+                'label' => 'Scan Kartu Pelajar Anggota 1',
+                'rules' => 'uploaded[scan_kartu_anggota1]|max_size[scan_kartu_anggota1,1024]|mime_in[scan_kartu_anggota1,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => '{field} wajib diisi.',
+                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
+                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
+                ]
+            ],
+            // amggota 2
+            'nama_anggota2' => [
+                'label' => 'Nama Anggota 2',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi.'
+                ]
+            ],
+            'alamat_anggota2' => [
+                'label' => 'Alamat Anggota 2',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi.'
+                ]
+            ],
+            'scan_kartu_anggota2' => [
+                'label' => 'Scan Kartu Pelajar Anggota 2',
+                'rules' => 'uploaded[scan_kartu_anggota2]|max_size[scan_kartu_anggota2,1024]|mime_in[scan_kartu_anggota2,image/png,image/jpg,image/jpeg]',
+                'errors' => [
+                    'uploaded' => '{field} wajib diisi.',
+                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
+                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
+                ]
+            ],
+            // amggota 3
+            'nama_anggota3' => [
+                'label' => 'Nama Anggota 3',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi.'
+                ]
+            ],
+            'alamat_anggota3' => [
+                'label' => 'Alamat Anggota 3',
+                'rules' => 'required',
+                'errors' => [
+                    'required' => '{field} wajib diisi.'
+                ]
+            ],
+            'scan_kartu_anggota3' => [
+                'label' => 'Scan Kartu Pelajar Anggota 3',
+                'rules' => 'uploaded[scan_kartu_anggota3]|max_size[scan_kartu_anggota3,1024]|mime_in[scan_kartu_anggota3,image/png,image/jpg,image/jpeg]',
+                'errors' => [
+                    'uploaded' => '{field} wajib diisi.',
+                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
+                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
+                ]
+            ],
+            // anggota 4
+            'scan_kartu_anggota4' => [
+                'label' => 'Scan Kartu Pelajar Anggota 4',
+                'rules' => 'max_size[scan_kartu_anggota4,1024]|mime_in[scan_kartu_anggota4,image/png,image/jpg,image/jpeg]',
+                'errors' => [
+                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
+                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
+                ]
+            ],
+            // anggota 5
+            'scan_kartu_anggota5' => [
+                'label' => 'Scan Kartu Pelajar Anggota 5',
+                'rules' => 'max_size[scan_kartu_anggota5,1024]|mime_in[scan_kartu_anggota5,image/png,image/jpg,image/jpeg]',
+                'errors' => [
                     'max_size' => '{field} Maksimal Ukurannya 1 MB',
                     'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
                 ]
@@ -817,62 +888,95 @@ class Pendaftaran extends BaseController
             ],
         ];
 
-        if ($this->validate($shortmovieValid)) {
+        if ($this->validate($shortMovieValid)) {
             //jika valid
             //mengambil data foto di form
-            $scan_kartu = $this->request->getFile('scan_kartu');
-            $bukti_igdifest = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
-            $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
+            $scan_kartu_anggota1    = $this->request->getFile('scan_kartu_anggota1');
+            $scan_kartu_anggota2    = $this->request->getFile('scan_kartu_anggota2');
+            $scan_kartu_anggota3    = $this->request->getFile('scan_kartu_anggota3');
+            $scan_kartu_anggota4    = $this->request->getFile('scan_kartu_anggota4');
+            $scan_kartu_anggota5    = $this->request->getFile('scan_kartu_anggota5');
+            $bukti_igdifest         = $this->request->getFile('bukti_igdifest');
+            $bukti_ighimmi          = $this->request->getFile('bukti_ighimmi');
+            $bukti_ythimmi          = $this->request->getFile('bukti_ythimmi');
+            $bukti_pembayaran       = $this->request->getFile('bukti_pembayaran');
             //mengganti nama 
-            $kartu_anggota = $scan_kartu->getRandomName();
-            $igdifest = $bukti_igdifest->getRandomName();
-            $ighimmi = $bukti_ighimmi->getRandomName();
-            $ythimmi = $bukti_ythimmi->getRandomName();
-            $pembayaran = $bukti_pembayaran->getRandomName();
+            $kartu_anggota1         = $scan_kartu_anggota1->getRandomName();
+            $kartu_anggota2         = $scan_kartu_anggota2->getRandomName();
+            $kartu_anggota3         = $scan_kartu_anggota3->getRandomName();
+            $kartu_anggota4         = $scan_kartu_anggota4->getRandomName();
+            $kartu_anggota5         = $scan_kartu_anggota5->getRandomName();
+            $igdifest               = $bukti_igdifest->getRandomName();
+            $ighimmi                = $bukti_ighimmi->getRandomName();
+            $ythimmi                = $bukti_ythimmi->getRandomName();
+            $pembayaran             = $bukti_pembayaran->getRandomName();
 
             $data = [
-                'jenis_lomba' => $this->request->getPost('jenis_lomba'),
-                'email' => $this->request->getPost('email'),
-                'nama_lengkap' => $this->request->getPost('nama_lengkap'),
-                'alamat' => $this->request->getPost('alamat'),
-                'instansi' => $this->request->getPost('instansi'),
-                'wa' => $this->request->getPost('wa'),
-                'instagram' => $this->request->getPost('instagram'),
-                'scan_kartu' => $kartu_anggota,
+                'jenis_lomba'       => 'Short Movie',
+                'email'             => $this->request->getPost('email'),
+                'instansi'          => $this->request->getPost('instansi'),
+                'nama_tim'          => $this->request->getPost('nama_tim'),
+                'wa'                => $this->request->getPost('wa'),
+                // anggota1
+                'nama_anggota1'         => $this->request->getPost('nama_anggota1'),
+                'alamat_anggota1'       => $this->request->getPost('alamat_anggota1'),
+                'scan_kartu_anggota1'   => $kartu_anggota1,
+                // anggota2
+                'nama_anggota2'         => $this->request->getPost('nama_anggota2'),
+                'alamat_anggota2'       => $this->request->getPost('alamat_anggota2'),
+                'scan_kartu_anggota2'   => $kartu_anggota2,
+                // anggota3
+                'nama_anggota3'         => $this->request->getPost('nama_anggota3'),
+                'alamat_anggota3'       => $this->request->getPost('alamat_anggota3'),
+                'scan_kartu_anggota3'   => $kartu_anggota3,
+                // anggota4
+                'nama_anggota4'         => $this->request->getPost('nama_anggota4'),
+                'alamat_anggota4'       => $this->request->getPost('alamat_anggota4'),
+                'scan_kartu_anggota4'   => $kartu_anggota4,
+                // anggota5
+                'nama_anggota5'         => $this->request->getPost('nama_anggota5'),
+                'alamat_anggota5'       => $this->request->getPost('alamat_anggota5'),
+                'scan_kartu_anggota5'   => $kartu_anggota5,
                 // bukti
-                'bukti_igdifest' => $igdifest,
-                'bukti_ighimmi' => $ighimmi,
-                'bukti_ythimmi' => $ythimmi,
-                'bukti_pembayaran' => $pembayaran,
+                'bukti_igdifest'        => $igdifest,
+                'bukti_ighimmi'         => $ighimmi,
+                'bukti_ythimmi'         => $ythimmi,
+                'bukti_pembayaran'      => $pembayaran,
             ];
             // memindahkan lokasi foto
-            $scan_kartu->move('fotoshortmovie', $kartu_anggota);
+            $scan_kartu_anggota1->move('fotoshortmovie', $kartu_anggota1);
+            $scan_kartu_anggota2->move('fotoshortmovie', $kartu_anggota2);
+            $scan_kartu_anggota3->move('fotoshortmovie', $kartu_anggota3);
+            $scan_kartu_anggota4->move('fotoshortmovie', $kartu_anggota4);
+            $scan_kartu_anggota5->move('fotoshortmovie', $kartu_anggota5);
             $bukti_igdifest->move('fotoshortmovie', $igdifest);
             $bukti_ighimmi->move('fotoshortmovie', $ighimmi);
             $bukti_ythimmi->move('fotoshortmovie', $ythimmi);
             $bukti_pembayaran->move('fotoshortmovie', $pembayaran);
 
-            $this->ModelPendaftaran->addPendaftaranshortmovie($data);
-            session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Desain Shortmovie. Silahkan Input Data Pembayaran!!!');
+            $this->ModelPendaftaran->addPendaftaranShortMovie($data);
+            session()->setFlashdata('pesan', 'Anda Berhasil Daftar Jenis Perlombaan Short Movie. Silahkan Input Data Pembayaran!!!');
 
-            return redirect()->to(base_url('pendaftaran/informasiShortmovie'));
+            $data_short_movie = $this->ModelShortMovie->detailByEmail($data['email']);
+
+            return redirect()->to(base_url('pendaftaran/informasiShortMovie/' . $data_short_movie['id_pendaftaran_movie']));
         } else {
             //jika tidak valid
             session()->setFlashdata('errors', \config\Services::validation()->getErrors());
-            return redirect()->to(base_url('pendaftaran/inputDataShortmovie'));
+            return redirect()->back()->withInput();
         }
     }
 
-    public function informasiShortmovie()
+    public function informasiShortMovie($id_pendaftaran_movie)
     {
         $data = [
-            'title' => 'Informasi Pendaftaran Short Movie',
-            'isi'   => 'pendaftaran/informasiShortmovie',
+            'title'         => 'Pendaftaran Short Movie',
+            'shortmovie'    => $this->ModelShortMovie->detail($id_pendaftaran_movie),
+            'isi'           => 'pendaftaran/short_movie/informasiShortmovie',
         ];
         return view('layout/v_wrapper', $data);
     }
+    // ====================================================================
 
     public function downloadGuideDesainWeb()
     {

@@ -72,9 +72,9 @@
           <div class="col-lg">
             <h4 class="mb-3">Ketentuan Karya</h4>
             <ol class="ms-3">
-            <li>Maskot berupa Hewan yang berkarakter <strong style="color:#B627A9 ;"> Smart, Technologies dan
+              <li>Maskot berupa Hewan yang berkarakter <strong style="color:#B627A9 ;"> Smart, Technologies dan
                   Berbudaya Indonesia</strong> </li>
-            <li>Karya dapat menggunakan berbagai tools (coreldraw, freehand,Adobe Illustrator, Adobe Photoshop dll.)
+              <li>Karya dapat menggunakan berbagai tools (coreldraw, freehand,Adobe Illustrator, Adobe Photoshop dll.)
               </li>
               <li>Gambar maskot terdiri atas: </li>
               <ol type="a" class="ms-4">
@@ -88,7 +88,7 @@
               <li>Karya memiliki deskripsi yang menjelaskan makna dari karya yang dibuat dalam bentuk word(.docx) </li>
               <li>Karya yang telah dikirim sepenuhnya menjadi hak milik panitia dengan tidak mengubah hak cipta peserta
                 lomba</li>
-                <li>Juara 1 Lomba desain maskot, karya akan menjadi Maskot Difest 2024</li>
+              <li>Juara 1 Lomba desain maskot, karya akan menjadi Maskot Difest 2024</li>
               <li>Dilarang keras plagiarisme dan panitia tidak bertanggung jawab apabila terdapat tuntutan dari pihak
                 ketiga yang berkaitan dengan karya yang dikirim. </li>
               <li>Kriteria Penilaian</li>
@@ -159,9 +159,12 @@
         </div>
         <div class="row">
           <span class="main-button-lg text-center">
-            <a href="<?=base_url('pendaftaran/inputDataMaskot')?>">
+            <a href="<?= base_url('pendaftaran/inputDataMaskot') ?>">
               DAFTAR
             </a>
           </span>
         </div>
       </div>
+    </div>
+  </div>
+</div>
