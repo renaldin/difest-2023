@@ -61,8 +61,8 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-daftar">
-                    <label>Asal Instansi <small class="text-danger">*</small></label>
-                    <input type="text" class="form-control" name="instansi" placeholder="Masukkan Asal Instansi" value="<?= old('instansi') ?>">
+                    <label>Asal Sekolah/Kampus <small class="text-danger">*</small></label>
+                    <input type="text" class="form-control" name="instansi" placeholder="Masukkan Asal Sekolah/Kampus" value="<?= old('instansi') ?>">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -89,7 +89,7 @@
                     <input type="text" class="form-control" name="alamat_anggota1" placeholder="Masukkan Alamat" value="<?= old('alamat_anggota1') ?>">
                 </div>
                 <div class="form-daftar">
-                    <label>Scan Kartu Pelajar <small class="text-danger">*</small></label>
+                    <label>Scan Kartu Pelajar/Mahasiswa <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" name="scan_kartu_anggota1" value="<?= old('scan_kartu_anggota1') ?>">
                 </div>
             </div>
@@ -104,7 +104,7 @@
                     <input type="text" class="form-control" name="alamat_anggota2" placeholder="Masukkan Alamat" value="<?= old('alamat_anggota2') ?>">
                 </div>
                 <div class="form-daftar">
-                    <label>Scan Kartu Pelajar <small class="text-danger">*</small></label>
+                    <label>Scan Kartu Pelajar/Mahasiswa <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" id="preview_gambar" name="scan_kartu_anggota2" value="<?= old('scan_kartu_anggota2') ?>">
                 </div>
             </div>
@@ -119,7 +119,7 @@
                     <input type="text" class="form-control" name="alamat_anggota3" placeholder="Masukkan Alamat" value="<?= old('alamat_anggota3') ?>">
                 </div>
                 <div class="form-daftar">
-                    <label>Scan Kartu Pelajar <small class="text-danger">*</small></label>
+                    <label>Scan Kartu Pelajar/Mahasiswa <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" name="scan_kartu_anggota3" value="<?= old('scan_kartu_anggota3') ?>">
                 </div>
             </div>
@@ -134,7 +134,7 @@
                     <input type="text" class="form-control" name="alamat_anggota4" placeholder="Masukkan Alamat" value="<?= old('alamat_anggota4') ?>">
                 </div>
                 <div class="form-daftar">
-                    <label>Scan Kartu Pelajar</label>
+                    <label>Scan Kartu Pelajar/Mahasiswa <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" id="preview_gambar" name="scan_kartu_anggota4" value="<?= old('scan_kartu_anggota4') ?>">
                 </div>
             </div>
@@ -149,34 +149,15 @@
                     <input type="text" class="form-control" name="alamat_anggota5" placeholder="Masukkan Alamat" value="<?= old('alamat_anggota5') ?>">
                 </div>
                 <div class="form-daftar">
-                    <label>Scan Kartu Pelajar</label>
+                    <label>Scan Kartu Pelajar/Mahasiswa <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" id="preview_gambar" name="scan_kartu_anggota5" value="<?= old('scan_kartu_anggota5') ?>">
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 col-sm-12">
+            <div class="cl-lg-12">
                 <div class="form-daftar">
-                    <label>* Gambar Bukti</label>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-12">
-                <div class="form-daftar">
-                    <label>Bukti Follow Instagram <i>difest2022</i> <small class="text-danger">*</small></label>
-                    <input type="file" class="form-control pt-3" name="bukti_igdifest" value="<?= old('bukti_igdifest') ?>">
-                </div>
-                <div class="form-daftar">
-                    <label>Bukti Follow Instagram <i>himmi.polsub</i> <small class="text-danger">*</small></label>
-                    <input type="file" class="form-control pt-3" name="bukti_ighimmi" value="<?= old('bukti_ighimmi') ?>">
-                </div>
-            </div>
-            <div class="cl-lg-12 col-sm-6">
-                <div class="form-daftar">
-                    <label>Bukti Subscribe Youtube <i>Media Himmi</i> <small class="text-danger">*</small></label>
-                    <input type="file" class="form-control pt-3" name="bukti_ythimmi" value="<?= old('bukti_ythimmi') ?>">
-                </div>
-                <div class="form-daftar">
-                    <label>Bukti Pembayaran <small class="text-danger">*</small></label>
+                    <label>Bukti Pembayaran <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" name="bukti_pembayaran" value="<?= old('bukti_pembayaran') ?>">
                 </div>
             </div>

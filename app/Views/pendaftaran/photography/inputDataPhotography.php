@@ -62,37 +62,23 @@
                     <label>Alamat <small class="text-danger">*</small></label>
                     <input type="text" class="form-control" name="alamat" placeholder="Masukkan Alamat" value="<?= old('alamat') ?>">
                 </div>
-
+            </div>
+            <div class="col-lg-6">
                 <div class="form-daftar">
-                    <label>Asal Instansi <small class="text-danger">*</small></label>
-                    <input type="text" class="form-control" name="instansi" placeholder="Masukkan Asal Instansi" value="<?= old('instansi') ?>">
+                    <label>Asal Sekolah <small class="text-danger">*</small></label>
+                    <input type="text" class="form-control" name="instansi" placeholder="Masukkan Asal Sekolah" value="<?= old('instansi') ?>">
                 </div>
-
                 <div class="form-daftar">
                     <label>Nomor Whatsapp <small class="text-danger">*</small><small class="text-danger"> (exp:
                             0838345405878)</small></label>
                     <input type="number" class="form-control" name="wa" placeholder="Masukkan Nomor Whatsapp" value="<?= old('wa') ?>">
                 </div>
-            </div>
-            <div class="col-lg-6">
                 <div class="form-daftar">
-                    <label>Scan Kartu Pelajar <small class="text-danger">*</small></label>
+                    <label>Scan Kartu Pelajar <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" name="scan_kartu" value="<?= old('scan_kartu') ?>">
                 </div>
                 <div class="form-daftar">
-                    <label>Bukti Follow Instagram <i>difest2022</i> <small class="text-danger">*</small></label>
-                    <input type="file" class="form-control pt-3" name="bukti_igdifest" value="<?= old('bukti_igdifest') ?>">
-                </div>
-                <div class="form-daftar">
-                    <label>Bukti Follow Instagram <i>himmi.polsub</i> <small class="text-danger">*</small></label>
-                    <input type="file" class="form-control pt-3" name="bukti_ighimmi" value="<?= old('bukti_ighimmi') ?>">
-                </div>
-                <div class="form-daftar">
-                    <label>Bukti Subscribe Youtube <i>Media Himmi</i> <small class="text-danger">*</small></label>
-                    <input type="file" class="form-control pt-3" name="bukti_ythimmi" value="<?= old('bukti_ythimmi') ?>">
-                </div>
-                <div class="form-daftar">
-                    <label>Bukti Pembayaran <small class="text-danger">*</small></label>
+                    <label>Bukti Pembayaran <small class="text-danger">* Maksimal ukuran file 1 mb</small></label>
                     <input type="file" class="form-control pt-3" name="bukti_pembayaran" value="<?= old('bukti_pembayaran') ?>">
                 </div>
             </div>
