@@ -22,7 +22,7 @@
                         <a href=""><i class="fab fa-youtube fa-2x"></i></a>
                     </div>
                     <div class="col-lg-6 col-sm-12 pt-3">
-                        <p>© 2023 Himmi Polsub. All rights reserved.</p>
+                        <p>&copy;<b><?= date('Y') ?></b> Difest Himmi Polsub. All rights reserved. Designed by Dep. Ristek Himmi Polsub..</p>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <footer class="tm-footer row tm-mt-small">
     <div class="col-12 font-weight-light">
         <p class="text-center text-white mb-0 px-4 small">
-            Copyright &copy;<b><?= date('Y') ?></b> Himmi Polsub. All rights reserved.
+            Copyright &copy;<b><?= date('Y') ?></b> Difest Himmi Polsub. All rights reserved. Designed by Dep. Ristek Himmi Polsub.
         </p>
     </div>
 </footer>
