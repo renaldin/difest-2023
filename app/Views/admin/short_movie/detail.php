@@ -117,15 +117,6 @@
                 <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#buktiPembayaran">
                     Bukti Pembayaran
                 </button>
-                <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#bukti_igdifest">
-                    Follow Instagram Difest 2023
-                </button>
-                <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#bukti_ighimmi">
-                    Follow Instagram HIMMI
-                </button>
-                <button class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#bukti_ythimmi">
-                    Subscribe YouTube
-                </button>
             </div>
         </div>
     </div>

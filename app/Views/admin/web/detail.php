@@ -65,24 +65,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-lg-6">
-                        <label class="tm-hide-sm">&nbsp;</label>
-                        <button type="button" class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#bukti_igdifest">
-                            Follow Instagram Difest 2023
-                        </button>
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label class="tm-hide-sm">&nbsp;</label>
-                        <button type="button" class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#bukti_ighimmi">
-                            Follow Instagram HIMMI
-                        </button>
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label class="tm-hide-sm">&nbsp;</label>
-                        <button type="button" class="btn btn-primary btn-block text-uppercase" data-toggle="modal" data-target="#bukti_ythimmi">
-                            Subscribe YouTube
-                        </button>
-                    </div>
                 </form>
             </div>
         </div>
