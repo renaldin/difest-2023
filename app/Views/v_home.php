@@ -10,10 +10,22 @@
                                 <h6>Welcome To</h6>
                                 <h4><em>DIFEST 2023</em></h4>
                                 <h5 class="mb-4">Digital Festival by Himmi Polsub</h5>
-                                <span class="main-button">
-                                    <a href="<?= base_url('pendaftaran') ?>">DAFTAR SEKARANG</a>
-                                </span>
-                                <a href="#" class="link-me"><i class="fa fa-download"></i> Guidebook</a>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <a href="#" class="link-me"><i class="fa fa-download"></i> Booklet</a>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <a href="https://twb.nz/pesertadifest2023" target="__blank" class="link-me"><i class="fa fa-download"></i> Twibbon</a>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <a href="#" class="link-me"><i class="fa fa-download"></i> Flyer</a>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 mb-2">
+                                        <span class="main-button">
+                                            <a href="<?= base_url('pendaftaran') ?>">DAFTAR SEKARANG</a>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col">

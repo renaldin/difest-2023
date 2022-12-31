@@ -805,34 +805,18 @@ class Pendaftaran extends BaseController
     }
     // ====================================================================
 
-    public function downloadGuideDesainWeb()
+    public function downloadBooklet()
     {
-        $data = file_get_contents(base_url('pdf/Guidebook_Desain_Web.pdf'));
-        $nama = 'Guidebook_Desain_Web.pdf';
+        $data = file_get_contents(base_url('dokumen/booklet.pdf'));
+        $nama = 'BookletDifest2023.pdf';
 
         return $this->response->download($nama, $data);
     }
 
-    public function downloadGuideDesainMaskot()
+    public function downloadFlyer()
     {
-        $data = file_get_contents(base_url('pdf/Guidebook_Desain_Maskot.pdf'));
-        $nama = 'Guidebook_Desain_Maskot.pdf';
-
-        return $this->response->download($nama, $data);
-    }
-
-    public function downloadGuideDesainPoster()
-    {
-        $data = file_get_contents(base_url('pdf/Guidebook_Desain_Poster.pdf'));
-        $nama = 'Guidebook_Desain_Poster.pdf';
-
-        return $this->response->download($nama, $data);
-    }
-
-    public function downloadGuidePhotography()
-    {
-        $data = file_get_contents(base_url('pdf/Guidebook_Fotografi.pdf'));
-        $nama = 'Guidebook_Photography.pdf';
+        $data = file_get_contents(base_url('dokumen/flyer.png'));
+        $nama = 'FlyerDifest2023.png';
 
         return $this->response->download($nama, $data);
     }
