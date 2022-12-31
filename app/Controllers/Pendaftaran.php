@@ -64,7 +64,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'instansi' => [
-                'label' => 'Instansi',
+                'label' => 'Sekolah',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -134,33 +134,6 @@ class Pendaftaran extends BaseController
             ],
 
             // bukti
-            'bukti_igdifest' => [
-                'label' => 'Bukti Follow Instagram difest2021',
-                'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ighimmi' => [
-                'label' => 'Bukti Follow Instagram himmi.polsub',
-                'rules' => 'uploaded[bukti_ighimmi]|max_size[bukti_ighimmi,1024]|mime_in[bukti_ighimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ythimmi' => [
-                'label' => 'Bukti Subscribe Youtube Media Himmi',
-                'rules' => 'uploaded[bukti_ythimmi]|max_size[bukti_ythimmi,1024]|mime_in[bukti_ythimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
             'bukti_pembayaran' => [
                 'label' => 'Bukti Pembayaran',
                 'rules' => 'uploaded[bukti_pembayaran]|max_size[bukti_pembayaran,1024]|mime_in[bukti_pembayaran,image/png,image/jpg,image/jpeg]',
@@ -175,16 +148,10 @@ class Pendaftaran extends BaseController
         if ($this->validate($webValid)) {
             $scan_kartu_anggota1    = $this->request->getFile('scan_kartu_anggota1');
             $scan_kartu_anggota2    = $this->request->getFile('scan_kartu_anggota2');
-            $bukti_igdifest         = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi          = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi          = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran       = $this->request->getFile('bukti_pembayaran');
 
             $kartu_anggota1         = $scan_kartu_anggota1->getRandomName();
             $kartu_anggota2         = $scan_kartu_anggota2->getRandomName();
-            $igdifest               = $bukti_igdifest->getRandomName();
-            $ighimmi                = $bukti_ighimmi->getRandomName();
-            $ythimmi                = $bukti_ythimmi->getRandomName();
             $pembayaran             = $bukti_pembayaran->getRandomName();
 
             $data = [
@@ -203,17 +170,11 @@ class Pendaftaran extends BaseController
                 'wa_anggota2'           => $this->request->getPost('wa_anggota2'),
                 'scan_kartu_anggota2'   => $kartu_anggota2,
 
-                'bukti_igdifest'        => $igdifest,
-                'bukti_ighimmi'         => $ighimmi,
-                'bukti_ythimmi'         => $ythimmi,
                 'bukti_pembayaran'      => $pembayaran,
             ];
 
             $scan_kartu_anggota1->move('fotoweb', $kartu_anggota1);
             $scan_kartu_anggota2->move('fotoweb', $kartu_anggota2);
-            $bukti_igdifest->move('fotoweb', $igdifest);
-            $bukti_ighimmi->move('fotoweb', $ighimmi);
-            $bukti_ythimmi->move('fotoweb', $ythimmi);
             $bukti_pembayaran->move('fotoweb', $pembayaran);
 
             $this->ModelPendaftaran->addPendaftaranWeb($data);
@@ -283,7 +244,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'instansi' => [
-                'label' => 'Instansi',
+                'label' => 'Sekolah',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -307,33 +268,6 @@ class Pendaftaran extends BaseController
             ],
 
             // bukti
-            'bukti_igdifest' => [
-                'label' => 'Bukti Follow Instagram difest2021',
-                'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ighimmi' => [
-                'label' => 'Bukti Follow Instagram himmi.polsub',
-                'rules' => 'uploaded[bukti_ighimmi]|max_size[bukti_ighimmi,1024]|mime_in[bukti_ighimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ythimmi' => [
-                'label' => 'Bukti Subscribe Youtube Media Himmi',
-                'rules' => 'uploaded[bukti_ythimmi]|max_size[bukti_ythimmi,1024]|mime_in[bukti_ythimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
             'bukti_pembayaran' => [
                 'label' => 'Bukti Pembayaran',
                 'rules' => 'uploaded[bukti_pembayaran]|max_size[bukti_pembayaran,1024]|mime_in[bukti_pembayaran,image/png,image/jpg,image/jpeg]',
@@ -348,15 +282,9 @@ class Pendaftaran extends BaseController
         if ($this->validate($maskotValid)) {
 
             $scan_kartu         = $this->request->getFile('scan_kartu');
-            $bukti_igdifest     = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi      = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi      = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran   = $this->request->getFile('bukti_pembayaran');
 
             $kartu          = $scan_kartu->getRandomName();
-            $igdifest       = $bukti_igdifest->getRandomName();
-            $ighimmi        = $bukti_ighimmi->getRandomName();
-            $ythimmi        = $bukti_ythimmi->getRandomName();
             $pembayaran     = $bukti_pembayaran->getRandomName();
 
             $data = [
@@ -367,16 +295,10 @@ class Pendaftaran extends BaseController
                 'instansi'          => $this->request->getPost('instansi'),
                 'wa'                => $this->request->getPost('wa'),
                 'scan_kartu'        => $kartu,
-                'bukti_igdifest'    => $igdifest,
-                'bukti_ighimmi'     => $ighimmi,
-                'bukti_ythimmi'     => $ythimmi,
                 'bukti_pembayaran'  => $pembayaran,
             ];
 
             $scan_kartu->move('fotomaskot', $kartu);
-            $bukti_igdifest->move('fotomaskot', $igdifest);
-            $bukti_ighimmi->move('fotomaskot', $ighimmi);
-            $bukti_ythimmi->move('fotomaskot', $ythimmi);
             $bukti_pembayaran->move('fotomaskot', $pembayaran);
 
             $this->ModelPendaftaran->addPendaftaranMaskot($data);
@@ -445,7 +367,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'instansi' => [
-                'label' => 'Instansi',
+                'label' => 'Sekolah',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -468,34 +390,6 @@ class Pendaftaran extends BaseController
                 ]
             ],
 
-
-            'bukti_igdifest' => [
-                'label' => 'Bukti Follow Instagram difest2021',
-                'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ighimmi' => [
-                'label' => 'Bukti Follow Instagram himmi.polsub',
-                'rules' => 'uploaded[bukti_ighimmi]|max_size[bukti_ighimmi,1024]|mime_in[bukti_ighimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ythimmi' => [
-                'label' => 'Bukti Subscribe Youtube Media Himmi',
-                'rules' => 'uploaded[bukti_ythimmi]|max_size[bukti_ythimmi,1024]|mime_in[bukti_ythimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
             'bukti_pembayaran' => [
                 'label' => 'Bukti Pembayaran',
                 'rules' => 'uploaded[bukti_pembayaran]|max_size[bukti_pembayaran,1024]|mime_in[bukti_pembayaran,image/png,image/jpg,image/jpeg]',
@@ -510,15 +404,9 @@ class Pendaftaran extends BaseController
         if ($this->validate($posterValid)) {
 
             $scan_kartu = $this->request->getFile('scan_kartu');
-            $bukti_igdifest = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
 
             $kartu_anggota = $scan_kartu->getRandomName();
-            $igdifest = $bukti_igdifest->getRandomName();
-            $ighimmi = $bukti_ighimmi->getRandomName();
-            $ythimmi = $bukti_ythimmi->getRandomName();
             $pembayaran = $bukti_pembayaran->getRandomName();
 
             $data = [
@@ -530,16 +418,10 @@ class Pendaftaran extends BaseController
                 'wa'            => $this->request->getPost('wa'),
                 'scan_kartu'    => $kartu_anggota,
 
-                'bukti_igdifest' => $igdifest,
-                'bukti_ighimmi' => $ighimmi,
-                'bukti_ythimmi' => $ythimmi,
                 'bukti_pembayaran' => $pembayaran,
             ];
 
             $scan_kartu->move('fotoposter', $kartu_anggota);
-            $bukti_igdifest->move('fotoposter', $igdifest);
-            $bukti_ighimmi->move('fotoposter', $ighimmi);
-            $bukti_ythimmi->move('fotoposter', $ythimmi);
             $bukti_pembayaran->move('fotoposter', $pembayaran);
 
             $this->ModelPendaftaran->addPendaftaranPoster($data);
@@ -608,7 +490,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'instansi' => [
-                'label' => 'Instansi',
+                'label' => 'Sekolah',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -631,33 +513,6 @@ class Pendaftaran extends BaseController
                 ]
             ],
 
-            'bukti_igdifest' => [
-                'label' => 'Bukti Follow Instagram difest2021',
-                'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ighimmi' => [
-                'label' => 'Bukti Follow Instagram himmi.polsub',
-                'rules' => 'uploaded[bukti_ighimmi]|max_size[bukti_ighimmi,1024]|mime_in[bukti_ighimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ythimmi' => [
-                'label' => 'Bukti Subscribe Youtube Media Himmi',
-                'rules' => 'uploaded[bukti_ythimmi]|max_size[bukti_ythimmi,1024]|mime_in[bukti_ythimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
             'bukti_pembayaran' => [
                 'label' => 'Bukti Pembayaran',
                 'rules' => 'uploaded[bukti_pembayaran]|max_size[bukti_pembayaran,1024]|mime_in[bukti_pembayaran,image/png,image/jpg,image/jpeg]',
@@ -672,15 +527,9 @@ class Pendaftaran extends BaseController
         if ($this->validate($photographyValid)) {
 
             $scan_kartu = $this->request->getFile('scan_kartu');
-            $bukti_igdifest = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran = $this->request->getFile('bukti_pembayaran');
 
             $kartu_anggota = $scan_kartu->getRandomName();
-            $igdifest = $bukti_igdifest->getRandomName();
-            $ighimmi = $bukti_ighimmi->getRandomName();
-            $ythimmi = $bukti_ythimmi->getRandomName();
             $pembayaran = $bukti_pembayaran->getRandomName();
 
             $data = [
@@ -691,17 +540,10 @@ class Pendaftaran extends BaseController
                 'instansi' => $this->request->getPost('instansi'),
                 'wa' => $this->request->getPost('wa'),
                 'scan_kartu' => $kartu_anggota,
-
-                'bukti_igdifest' => $igdifest,
-                'bukti_ighimmi' => $ighimmi,
-                'bukti_ythimmi' => $ythimmi,
                 'bukti_pembayaran' => $pembayaran,
             ];
 
             $scan_kartu->move('fotophotography', $kartu_anggota);
-            $bukti_igdifest->move('fotophotography', $igdifest);
-            $bukti_ighimmi->move('fotophotography', $ighimmi);
-            $bukti_ythimmi->move('fotophotography', $ythimmi);
             $bukti_pembayaran->move('fotophotography', $pembayaran);
 
             $this->ModelPendaftaran->addPendaftaranPhotography($data);
@@ -763,7 +605,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'instansi' => [
-                'label' => 'Instansi',
+                'label' => 'Sekolah',
                 'rules' => 'required',
                 'errors' => [
                     'required' => '{field} wajib diisi.'
@@ -792,7 +634,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'scan_kartu_anggota1' => [
-                'label' => 'Scan Kartu Pelajar Anggota 1',
+                'label' => 'Scan Kartu Pelajar/Mahasiswa Anggota 1',
                 'rules' => 'uploaded[scan_kartu_anggota1]|max_size[scan_kartu_anggota1,1024]|mime_in[scan_kartu_anggota1,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => '{field} wajib diisi.',
@@ -816,7 +658,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'scan_kartu_anggota2' => [
-                'label' => 'Scan Kartu Pelajar Anggota 2',
+                'label' => 'Scan Kartu Pelajar/Mahasiswa Anggota 2',
                 'rules' => 'uploaded[scan_kartu_anggota2]|max_size[scan_kartu_anggota2,1024]|mime_in[scan_kartu_anggota2,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => '{field} wajib diisi.',
@@ -840,7 +682,7 @@ class Pendaftaran extends BaseController
                 ]
             ],
             'scan_kartu_anggota3' => [
-                'label' => 'Scan Kartu Pelajar Anggota 3',
+                'label' => 'Scan Kartu Pelajar/Mahasiswa Anggota 3',
                 'rules' => 'uploaded[scan_kartu_anggota3]|max_size[scan_kartu_anggota3,1024]|mime_in[scan_kartu_anggota3,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'uploaded' => '{field} wajib diisi.',
@@ -850,7 +692,7 @@ class Pendaftaran extends BaseController
             ],
             // anggota 4
             'scan_kartu_anggota4' => [
-                'label' => 'Scan Kartu Pelajar Anggota 4',
+                'label' => 'Scan Kartu Pelajar/Mahasiswa Anggota 4',
                 'rules' => 'max_size[scan_kartu_anggota4,1024]|mime_in[scan_kartu_anggota4,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'max_size' => '{field} Maksimal Ukurannya 1 MB',
@@ -859,7 +701,7 @@ class Pendaftaran extends BaseController
             ],
             // anggota 5
             'scan_kartu_anggota5' => [
-                'label' => 'Scan Kartu Pelajar Anggota 5',
+                'label' => 'Scan Kartu Pelajar/Mahasiswa Anggota 5',
                 'rules' => 'max_size[scan_kartu_anggota5,1024]|mime_in[scan_kartu_anggota5,image/png,image/jpg,image/jpeg]',
                 'errors' => [
                     'max_size' => '{field} Maksimal Ukurannya 1 MB',
@@ -868,33 +710,6 @@ class Pendaftaran extends BaseController
             ],
 
             // bukti
-            'bukti_igdifest' => [
-                'label' => 'Bukti Follow Instagram difest2021',
-                'rules' => 'uploaded[bukti_igdifest]|max_size[bukti_igdifest,1024]|mime_in[bukti_igdifest,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ighimmi' => [
-                'label' => 'Bukti Follow Instagram himmi.polsub',
-                'rules' => 'uploaded[bukti_ighimmi]|max_size[bukti_ighimmi,1024]|mime_in[bukti_ighimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
-            'bukti_ythimmi' => [
-                'label' => 'Bukti Subscribe Youtube Media Himmi',
-                'rules' => 'uploaded[bukti_ythimmi]|max_size[bukti_ythimmi,1024]|mime_in[bukti_ythimmi,image/png,image/jpg,image/jpeg]',
-                'errors' => [
-                    'uploaded' => '{field} wajib diisi.',
-                    'max_size' => '{field} Maksimal Ukurannya 1 MB',
-                    'mime_in' => 'Format {field} Wajib PNG/JPG/JPEG',
-                ]
-            ],
             'bukti_pembayaran' => [
                 'label' => 'Bukti Pembayaran',
                 'rules' => 'uploaded[bukti_pembayaran]|max_size[bukti_pembayaran,1024]|mime_in[bukti_pembayaran,image/png,image/jpg,image/jpeg]',
@@ -914,9 +729,6 @@ class Pendaftaran extends BaseController
             $scan_kartu_anggota3    = $this->request->getFile('scan_kartu_anggota3');
             $scan_kartu_anggota4    = $this->request->getFile('scan_kartu_anggota4');
             $scan_kartu_anggota5    = $this->request->getFile('scan_kartu_anggota5');
-            $bukti_igdifest         = $this->request->getFile('bukti_igdifest');
-            $bukti_ighimmi          = $this->request->getFile('bukti_ighimmi');
-            $bukti_ythimmi          = $this->request->getFile('bukti_ythimmi');
             $bukti_pembayaran       = $this->request->getFile('bukti_pembayaran');
             //mengganti nama 
             $kartu_anggota1         = $scan_kartu_anggota1->getRandomName();
@@ -924,9 +736,6 @@ class Pendaftaran extends BaseController
             $kartu_anggota3         = $scan_kartu_anggota3->getRandomName();
             $kartu_anggota4         = $scan_kartu_anggota4->getRandomName();
             $kartu_anggota5         = $scan_kartu_anggota5->getRandomName();
-            $igdifest               = $bukti_igdifest->getRandomName();
-            $ighimmi                = $bukti_ighimmi->getRandomName();
-            $ythimmi                = $bukti_ythimmi->getRandomName();
             $pembayaran             = $bukti_pembayaran->getRandomName();
 
             $data = [
@@ -956,9 +765,6 @@ class Pendaftaran extends BaseController
                 'alamat_anggota5'       => $this->request->getPost('alamat_anggota5'),
                 'scan_kartu_anggota5'   => $kartu_anggota5,
                 // bukti
-                'bukti_igdifest'        => $igdifest,
-                'bukti_ighimmi'         => $ighimmi,
-                'bukti_ythimmi'         => $ythimmi,
                 'bukti_pembayaran'      => $pembayaran,
             ];
             // memindahkan lokasi foto
@@ -967,9 +773,6 @@ class Pendaftaran extends BaseController
             $scan_kartu_anggota3->move('fotoshortmovie', $kartu_anggota3);
             $scan_kartu_anggota4->move('fotoshortmovie', $kartu_anggota4);
             $scan_kartu_anggota5->move('fotoshortmovie', $kartu_anggota5);
-            $bukti_igdifest->move('fotoshortmovie', $igdifest);
-            $bukti_ighimmi->move('fotoshortmovie', $ighimmi);
-            $bukti_ythimmi->move('fotoshortmovie', $ythimmi);
             $bukti_pembayaran->move('fotoshortmovie', $pembayaran);
 
             $this->ModelPendaftaran->addPendaftaranShortMovie($data);
