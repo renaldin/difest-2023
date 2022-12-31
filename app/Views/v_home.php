@@ -56,10 +56,8 @@
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <div class="thumb">
-                                        <img src="<?= base_url() ?>/../public/assets/img/tumbnail-video.png" alt=""
-                                            style="border-radius: 23px;">
-                                        <a href="https://www.instagram.com/reel/ClNFP9Vp31s/?igshid=YzdkMWQ2MWU="
-                                            target="_blank"><i class="fa fa-play"></i></a>
+                                        <img src="<?= base_url() ?>/../public/assets/img/tumbnail-video.png" alt="" style="border-radius: 23px;">
+                                        <a href="https://www.instagram.com/reel/ClNFP9Vp31s/?igshid=YzdkMWQ2MWU=" target="_blank"><i class="fa fa-play"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +74,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12 border-end">
-                                    <img src="<?= base_url() ?>/../public/assets/img/direktur.png" alt=""
-                                        style="border-radius:20px;">
+                                    <img src="<?= base_url() ?>/../public/assets/img/direktur.png" alt="" style="border-radius:20px;">
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <p>
@@ -114,27 +111,24 @@
                                 <div class="col-lg-4 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba') ?>">
                                         <div class="item">
-                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN MASKOT.png"
-                                                alt="">
-                                            <h4>Desain Maskot</h4>
+                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN MASKOT.png" alt="">
+                                            <h4>Maskot Design</h4>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-lg-4 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba/web') ?>">
                                         <div class="item">
-                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN WEB.png"
-                                                alt="">
-                                            <h4>Desain WEB</h4>
+                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN WEB.png" alt="">
+                                            <h4>Website Design</h4>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="col-lg-4 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba/poster') ?>">
                                         <div class="item">
-                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN POSTER.png"
-                                                alt="">
-                                            <h4>Desain Poster</h4>
+                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN POSTER.png" alt="">
+                                            <h4>Poster Design</h4>
                                         </div>
                                     </a>
                                 </div>
@@ -143,8 +137,7 @@
                                 <div class="col-lg-4 col-sm-6">
                                     <a href="<?= base_url('Detail_lomba/photography') ?>">
                                         <div class="item">
-                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO PHOTOGRAPHY.png"
-                                                alt="">
+                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO PHOTOGRAPHY.png" alt="">
                                             <h4>Photography</h4>
                                         </div>
                                     </a>
@@ -152,8 +145,7 @@
                                 <div class="col-lg-4 col-sm-6">
                                     <a href="<?= base_url('Detail_lomba/shortmovie') ?>">
                                         <div class="item">
-                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO SHORT MOVIE.png"
-                                                alt="">
+                                            <img src="<?= base_url() ?>/../public/assets/img/LOGO SHORT MOVIE.png" alt="">
                                             <h4>Short Movie</h4>
                                         </div>
                                     </a>

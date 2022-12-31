@@ -30,31 +30,31 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row justify-content-center">
-                                <div class="col-lg-2 col-sm-6 text-center">
+                                <div class="col-lg-3 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba') ?>">
                                         <div class="item">
                                             <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN MASKOT.png" alt="">
-                                            <h4>Desain Maskot</h4>
+                                            <h4>Maskot Design</h4>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-2 col-sm-6 text-center">
+                                <div class="col-lg-3 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba/web') ?>">
                                         <div class="item">
                                             <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN WEB.png" alt="">
-                                            <h4>Desain WEB</h4>
+                                            <h4>Website Design</h4>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-2 col-sm-6 text-center">
+                                <div class="col-lg-3 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba/poster') ?>">
                                         <div class="item">
                                             <img src="<?= base_url() ?>/../public/assets/img/LOGO DESAIN POSTER.png" alt="">
-                                            <h4>Desain Poster</h4>
+                                            <h4>Poster Design</h4>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-2 col-sm-6 text-center">
+                                <div class="col-lg-3 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba/photography') ?>">
                                         <div class="item">
                                             <img src="<?= base_url() ?>/../public/assets/img/LOGO PHOTOGRAPHY.png" alt="">
@@ -62,7 +62,7 @@
                                         </div>
                                     </a>
                                 </div>
-                                <div class="col-lg-2 col-sm-6 text-center">
+                                <div class="col-lg-3 col-sm-6 text-center">
                                     <a href="<?= base_url('Detail_lomba/shortmovie') ?>">
                                         <div class="item">
                                             <img src="<?= base_url() ?>/../public/assets/img/LOGO SHORT MOVIE.png" alt="">

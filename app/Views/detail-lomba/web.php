@@ -22,7 +22,7 @@
           <div class="col-lg-12">
             <div class="header-text">
               <div class="name-page">
-                <h4>Desain Web</h4>
+                <h4>Website Design</h4>
               </div>
             </div>
           </div>

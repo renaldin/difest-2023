@@ -707,7 +707,7 @@ Header Style
   }
   .header-area.header-sticky .nav li a:hover,
   .header-area.header-sticky .nav li a.active {
- \
+ 
     color: #B627A9!important;
     opacity: 1;
   }
@@ -937,6 +937,7 @@ Most Popular Style
 }
 .list-lomba {
   margin-top: 60px;
+  padding: 50px;
   background-color: #1f2122;
   border-radius: 23px;
 }

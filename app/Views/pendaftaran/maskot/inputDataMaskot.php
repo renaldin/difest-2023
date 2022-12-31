@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <div class="header-text">
                         <div class="name-page">
-                            <h4>Daftar Desain Maskot</h4>
+                            <h4>Daftar Maskot Design</h4>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="header-text">
                         <div class="name-page">
-                            <h4>Daftar Desain Poster</h4>
+                            <h4>Daftar Poster Design</h4>
                         </div>
                     </div>
                 </div>
